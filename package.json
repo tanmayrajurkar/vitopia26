@@ -1,0 +1,33 @@
+{
+  "name": "test",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@tabler/icons-react": "^3.36.1",
+    "@tailwindcss/postcss": "^4.1.18",
+    "animejs": "^4.2.2",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.25.0",
+    "next": "^16.1.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-icons": "^5.5.0",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^25.0.3",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.1",
+    "postcss": "^8",
+    "tailwindcss": "^4.1.18"
+  }
+}
