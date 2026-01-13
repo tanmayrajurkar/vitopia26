@@ -73,17 +73,17 @@ export default function AboutSection() {
                         <div className="group">
                             <div className="border-l-4 border-lime-400 pl-5 py-3 bg-gradient-to-r from-lime-400/5 to-transparent hover:from-lime-400/10 transition-all duration-300">
                                 <h3 className="text-xl md:text-2xl lg:text-3xl font-anton text-white mb-3 uppercase flex items-center gap-2">
-                                    VITOPIA '24
+                                    VITOPIA '25
                                     <span className="text-sm font-outfit normal-case text-lime-400 font-semibold">Flashback</span>
                                 </h3>
                                 <p className="text-gray-300 font-outfit text-sm md:text-base leading-relaxed">
                                     Last year, we witnessed history. With stellar performances by{" "}
-                                    <span className="text-lime-400 font-semibold">Jonita Gandhi</span> and the legendary duo{" "}
-                                    <span className="text-lime-400 font-semibold">Salim–Sulaiman</span>, VITOPIA '24 set the benchmark.
+                                    <span className="text-lime-400 font-semibold">Arman Malik</span> and the legendary {" "}
+                                    <span className="text-lime-400 font-semibold">Karthik</span>, VITOPIA '25 set the benchmark.
                                 </p>
                                 <p className="text-gray-400 font-outfit text-sm md:text-base leading-relaxed mt-2">
-                                    From the bass wobbles of <span className="text-white font-semibold">Nucleya</span> to the fusion beats of{" "}
-                                    <span className="text-white font-semibold">Thaikkudam Bridge</span>, it was a 3-day spectacle of pure energy.
+                                    From the bass wobbles of <span className="text-white font-semibold">Masala Coffee Band</span> to the fusion beats of{" "}
+                                    <span className="text-white font-semibold">Swaraag Band</span>, it was a 3-day spectacle of pure energy.
                                 </p>
                             </div>
                         </div>

@@ -804,7 +804,7 @@ function SportsPage() {
                         {/* Stats */}
                         <div className="flex flex-wrap justify-center gap-8 md:gap-16">
                             {[
-                                { value: 8, suffix: "+", label: "Sports" },
+                                { value: 30, suffix: "+", label: "Sports" },
                                 { value: 500, suffix: "+", label: "Participants" },
                                 { value: 3, suffix: "", label: "Days" }
                             ].map((stat, i) => (

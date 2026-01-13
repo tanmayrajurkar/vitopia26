@@ -388,7 +388,7 @@ function CulturalsPage() {
                             {[
                                 { value: 8, suffix: "+", label: "Events" },
                                 { value: 1000, suffix: "+", label: "Participants" },
-                                { value: 4, suffix: "", label: "Days" }
+                                { value: 3, suffix: "", label: "Days" }
                             ].map((stat, i) => (
                                 <motion.div
                                     key={i}
