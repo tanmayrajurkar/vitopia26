@@ -72,17 +72,17 @@ export function Footer() {
 
               {/* Newsletter */}
               {/* <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm"> */}
-                <h4 className="text-white font-anton text-xl uppercase mb-3">Stay Updated</h4>
-                <div className="relative flex">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="w-full bg-black/40 border border-white/10 text-white px-4 py-3 rounded-l-lg focus:outline-none focus:border-lime-400 transition-colors font-outfit"
-                  />
-                  <button className="bg-lime-400 hover:bg-lime-500 text-black px-4 rounded-r-lg transition-colors flex items-center justify-center">
-                    <IconArrowRight size={20} />
-                  </button>
-                </div>
+              <h4 className="text-white font-anton text-xl uppercase mb-3">Stay Updated</h4>
+              <div className="relative flex">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full bg-black/40 border border-white/10 text-white px-4 py-3 rounded-l-lg focus:outline-none focus:border-lime-400 transition-colors font-outfit"
+                />
+                <button className="bg-lime-400 hover:bg-lime-500 text-black px-4 rounded-r-lg transition-colors flex items-center justify-center">
+                  <IconArrowRight size={20} />
+                </button>
+              </div>
               {/* </div> */}
             </div>
 
@@ -140,12 +140,14 @@ export function Footer() {
           <div className="border-t border-white/10 pt-6 pb-4">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               {/* Copyright - Left */}
-              <p className="text-white/30 text-sm font-outfit uppercase tracking-wider text-center md:text-left">
-                &copy; 2026 VITOPIA. Crafted with <span className="text-lime-400 animate-pulse">❤</span> by{' '}
-                <a href="https://linkedin.com/in/prasanna-pal-542992274" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Prasanna</a>,{' '}
-                <a href="https://linkedin.com/in/tanmay-rajurkar-254305227" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Tanmay</a> and{' '}
-                <a href="https://linkedin.com/in/tanvish-reddy" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Tanvish</a>.
-              </p>
+              <div className="flex items-center px-4 py-2 border border-white/10 rounded-full text-white/50 hover:bg-white/5 transition-all">
+                <span className="text-xs font-outfit uppercase tracking-widest text-center md:text-left">
+                  &copy; 2026 VITOPIA. Crafted with <span className="text-lime-400 animate-pulse">❤</span> by{' '}
+                  <a href="https://linkedin.com/in/prasanna-pal-542992274" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Prasanna</a>,{' '}
+                  <a href="https://linkedin.com/in/tanvish-reddy" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Tanvish</a> &{' '}
+                  <a href="https://linkedin.com/in/tanmay-rajurkar-254305227" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Tanmay</a>
+                </span>
+              </div>
 
               {/* Socials - Center */}
               <div className="flex gap-3">

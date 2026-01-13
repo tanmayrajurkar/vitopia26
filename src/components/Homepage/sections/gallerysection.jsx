@@ -4,12 +4,30 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const images = [
-    "/last_lineup/jonitha.avif",
-    "/vitap_drone.webp",
-    "/last_lineup/jonitha.avif",
-    "/vitap_drone.webp",
-    "/last_lineup/jonitha.avif",
-    "/vitap_drone.webp",
+    {
+        mainUrl: "/25-1.webp",
+        hoverUrl: "/25-2.avif"
+    },
+    {
+        mainUrl: "/vitap_drone.webp",
+        hoverUrl: "/night-vit.webp"
+    },
+    {
+        mainUrl: "/25-2.avif",
+        hoverUrl: "/25-1.webp"
+    },
+    {
+        mainUrl: "/night-vit.webp",
+        hoverUrl: "/vitap_drone.webp"
+    },
+    {
+        mainUrl: "/25-1.webp",
+        hoverUrl: "/25-2.avif"
+    },
+    {
+        mainUrl: "/vitap_drone.webp",
+        hoverUrl: "/night-vit.webp"
+    },
 ];
 
 export default function GallerySection() {
@@ -65,21 +83,21 @@ export default function GallerySection() {
                     style={{ x: x1, willChange: 'transform' }}
                     className="flex gap-6 md:gap-8"
                 >
-                    {[...images, ...images].map((src, i) => (
+                    {[...images, ...images].map((img, i) => (
                         <div
                             key={`row1-${i}`}
                             className="relative w-[350px] md:w-[400px] h-[220px] md:h-[250px] shrink-0 rounded-xl overflow-hidden group border-2 border-white/10 hover:border-lime-400/40 transition-colors duration-300 bg-black"
                         >
                             <Image
-                                src={src}
+                                src={img.mainUrl}
                                 fill
                                 className="object-cover grayscale-0 group-hover:grayscale group-hover:scale-105 transition-all duration-500"
                                 alt="Gallery Memory"
                                 loading="lazy"
                             />
-                            {src === "/vitap_drone.webp" && (
+                            {img.hoverUrl && (
                                 <Image
-                                    src="/night-vit.webp"
+                                    src={img.hoverUrl}
                                     fill
                                     className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                                     alt="Gallery Memory Night"
@@ -99,21 +117,21 @@ export default function GallerySection() {
                     style={{ x: x2, willChange: 'transform' }}
                     className="flex gap-6 md:gap-8"
                 >
-                    {[...images, ...images].reverse().map((src, i) => (
+                    {[...images, ...images].reverse().map((img, i) => (
                         <div
                             key={`row2-${i}`}
                             className="relative w-[350px] md:w-[400px] h-[220px] md:h-[250px] shrink-0 rounded-xl overflow-hidden group border-2 border-white/10 hover:border-purple-500/40 transition-colors duration-300 bg-black"
                         >
                             <Image
-                                src={src}
+                                src={img.mainUrl}
                                 fill
                                 className="object-cover grayscale-0 group-hover:grayscale group-hover:scale-105 transition-all duration-500"
                                 alt="Gallery Memory"
                                 loading="lazy"
                             />
-                            {src === "/vitap_drone.webp" && (
+                            {img.hoverUrl && (
                                 <Image
-                                    src="/night-vit.webp"
+                                    src={img.hoverUrl}
                                     fill
                                     className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                                     alt="Gallery Memory Night"

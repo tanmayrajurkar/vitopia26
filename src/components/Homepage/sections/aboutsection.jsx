@@ -3,6 +3,23 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+const aboutImages = [
+    {
+        mainUrl: "/25-2.avif",
+        hoverUrl: "/25-1.webp",
+        alt: "Jonita Gandhi Performance",
+        label: "JONITA GANDHI",
+        className: "absolute top-0 right-0 w-[70%] h-[55%] border-2 border-lime-400/40 p-2 group hover:border-lime-400/80 transition-all duration-300"
+    },
+    {
+        mainUrl: "/night-vit.webp",
+        hoverUrl: "/vitap_drone.webp",
+        alt: "VIT-AP Campus Aerial View",
+        label: "VIT-AP CAMPUS",
+        className: "absolute bottom-0 left-0 w-[75%] h-[55%] border-2 border-purple-500/40 p-2 z-10 bg-black group hover:border-purple-500/80 transition-all duration-300"
+    }
+];
+
 export default function AboutSection() {
     return (
         <section className="py-16 md:py-20 bg-[#050505] relative overflow-hidden border-y border-white/10">
@@ -114,43 +131,30 @@ export default function AboutSection() {
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.6 }}
                     >
-                        {/* Top Image - Jonita Gandhi */}
-                        <div className="absolute top-0 right-0 w-[70%] h-[55%] border-2 border-lime-400/40 p-2 group hover:border-lime-400/80 transition-all duration-300">
-                            <div className="relative w-full h-full bg-black overflow-hidden">
-                                <Image
-                                    src="/last_lineup/jonitha.avif"
-                                    fill
-                                    className="object-cover grayscale-0 group-hover:grayscale group-hover:scale-110 transition-all duration-500"
-                                    alt="Jonita Gandhi Performance"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                <div className="absolute bottom-4 left-4 text-white font-anton text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    JONITA GANDHI
+                        {aboutImages.map((img, index) => (
+                            <div key={index} className={img.className}>
+                                <div className="relative w-full h-full bg-black overflow-hidden">
+                                    <Image
+                                        src={img.mainUrl}
+                                        fill
+                                        className="object-cover grayscale-0 group-hover:grayscale group-hover:scale-110 transition-all duration-500"
+                                        alt={img.alt}
+                                    />
+                                    {img.hoverUrl && (
+                                        <Image
+                                            src={img.hoverUrl}
+                                            fill
+                                            className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                                            alt={`${img.alt} Hover`}
+                                        />
+                                    )}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                    <div className="absolute bottom-4 left-4 text-white font-anton text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        {img.label}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        {/* Bottom Image - Campus */}
-                        <div className="absolute bottom-0 left-0 w-[75%] h-[55%] border-2 border-purple-500/40 p-2 z-10 bg-black group hover:border-purple-500/80 transition-all duration-300">
-                            <div className="relative w-full h-full bg-black overflow-hidden">
-                                <Image
-                                    src="/night-vit.webp"
-                                    fill
-                                    className="object-cover grayscale-0 group-hover:grayscale group-hover:scale-110 transition-all duration-500"
-                                    alt="VIT-AP Campus Aerial View"
-                                />
-                                <Image
-                                    src="/vitap_drone.webp"
-                                    fill
-                                    className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-                                    alt="VIT-AP Campus Night View"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                <div className="absolute bottom-4 left-4 text-white font-anton text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    VIT-AP CAMPUS
-                                </div>
-                            </div>
-                        </div>
+                        ))}
 
                         {/* Center Badge */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
