@@ -15,7 +15,7 @@ const bentoItems = [
     hoverBorderColor: "group-hover:border-lime-400/80",
     glowColor: "group-hover:shadow-[0_0_40px_rgba(190,242,100,0.4)]",
     size: "col-span-12 md:col-span-8",
-    backgroundImage: "/sports.png",
+    backgroundImage: "/sports.webp",
   },
   {
     title: "CULTURALS",
@@ -27,7 +27,7 @@ const bentoItems = [
     hoverBorderColor: "group-hover:border-pink-500/80",
     glowColor: "group-hover:shadow-[0_0_40px_rgba(236,72,153,0.4)]",
     size: "col-span-12 md:col-span-4",
-    backgroundImage: "/culturals.png",
+    backgroundImage: "/culturals.webp",
   },
   {
     title: "STATE RALLY",
@@ -39,7 +39,7 @@ const bentoItems = [
     hoverBorderColor: "group-hover:border-purple-500/80",
     glowColor: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.4)]",
     size: "col-span-12 md:col-span-4",
-    backgroundImage: "/state-rally.png",
+    backgroundImage: "/state-rally.webp",
   },
   {
     title: "PRO-SHOW",
@@ -51,7 +51,7 @@ const bentoItems = [
     hoverBorderColor: "group-hover:border-amber-400/80",
     glowColor: "group-hover:shadow-[0_0_40px_rgba(251,191,36,0.4)]",
     size: "col-span-12 md:col-span-8",
-    backgroundImage: "/night.png",
+    backgroundImage: "/night.webp",
   },
 ];
 

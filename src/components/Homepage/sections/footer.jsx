@@ -60,7 +60,7 @@ export function Footer() {
             <div className="lg:col-span-4 space-y-8">
               <Link href="/" className="relative block w-48 h-16 opacity-90 hover:opacity-100 transition-opacity">
                 <Image
-                  src="/vitopia-color.png"
+                  src="/vitopia-color.webp"
                   fill
                   className="object-contain object-left"
                   alt="VITOPIA Logo"

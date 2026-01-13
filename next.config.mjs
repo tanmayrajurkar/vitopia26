@@ -15,6 +15,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "mock-s3.amazonaws.com",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "plus.unsplash.com",
+      },
     ],
   },
 };

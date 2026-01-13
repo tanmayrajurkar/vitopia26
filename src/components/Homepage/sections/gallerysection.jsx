@@ -79,7 +79,7 @@ export default function GallerySection() {
                             />
                             {src === "/vitap_drone.webp" && (
                                 <Image
-                                    src="/night-vit.jpg"
+                                    src="/night-vit.webp"
                                     fill
                                     className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                                     alt="Gallery Memory Night"
@@ -113,7 +113,7 @@ export default function GallerySection() {
                             />
                             {src === "/vitap_drone.webp" && (
                                 <Image
-                                    src="/night-vit.jpg"
+                                    src="/night-vit.webp"
                                     fill
                                     className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                                     alt="Gallery Memory Night"

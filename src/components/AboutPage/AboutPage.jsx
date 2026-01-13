@@ -35,7 +35,7 @@ export default function About() {
                             <Image src={section.imgSrc} alt={section.imgAlt} layout="fill" objectFit="cover" className="rounded-lg" />
                             {section.imgSrc === "/vitap_drone.webp" && (
                                 <Image
-                                    src="/night-vit.jpg"
+                                    src="/night-vit.webp"
                                     alt={section.imgAlt}
                                     layout="fill"
                                     objectFit="cover"

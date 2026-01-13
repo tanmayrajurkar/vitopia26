@@ -134,13 +134,13 @@ export default function AboutSection() {
                         <div className="absolute bottom-0 left-0 w-[75%] h-[55%] border-2 border-purple-500/40 p-2 z-10 bg-black group hover:border-purple-500/80 transition-all duration-300">
                             <div className="relative w-full h-full bg-black overflow-hidden">
                                 <Image
-                                    src="/vitap_drone.webp"
+                                    src="/night-vit.webp"
                                     fill
                                     className="object-cover grayscale-0 group-hover:grayscale group-hover:scale-110 transition-all duration-500"
                                     alt="VIT-AP Campus Aerial View"
                                 />
                                 <Image
-                                    src="/night-vit.jpg"
+                                    src="/vitap_drone.webp"
                                     fill
                                     className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
                                     alt="VIT-AP Campus Night View"

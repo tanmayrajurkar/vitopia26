@@ -2,16 +2,19 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function HeroSection() {
     return (
         <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black py-20">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
-                <img
-                    src="/hero-image.png"
+                <Image
+                    src="/hero-image.webp"
                     alt="Hero Background"
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    priority
                 />
                 <div className="absolute inset-0 bg-black/70" />
             </div>
@@ -98,7 +101,7 @@ export default function HeroSection() {
                         <Link href={"/culturals"} className="w-[80%] cursor-pointer sm:w-auto px-10 py-4 bg-gradient-to-r from-lime-400 to-green-400 text-black font-anton text-base md:text-lg uppercase tracking-wider hover:from-lime-300 hover:to-green-300 transition-all duration-300 shadow-[0_0_30px_rgba(190,242,100,0.4)] hover:shadow-[0_0_50px_rgba(190,242,100,0.6)] hover:scale-105">
                             View Events
                         </Link>
-                        <button onClick={() => { document.getElementById("card-section").scrollIntoView({ behavior: "smooth" })}} className="w-[80%] cursor-pointer sm:w-auto px-10 py-4 border-2 border-white/20 text-white font-anton text-base md:text-lg uppercase tracking-wider hover:bg-white/10 hover:border-white/40 transition-all duration-300 backdrop-blur-sm">
+                        <button onClick={() => { document.getElementById("card-section").scrollIntoView({ behavior: "smooth" }) }} className="w-[80%] cursor-pointer sm:w-auto px-10 py-4 border-2 border-white/20 text-white font-anton text-base md:text-lg uppercase tracking-wider hover:bg-white/10 hover:border-white/40 transition-all duration-300 backdrop-blur-sm">
                             Highlights
                         </button>
                     </motion.div>

@@ -5,6 +5,7 @@ import Navbar from "@/components/Homepage/sections/navbar";
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { IconShoppingBag, IconTag, IconShirt, IconHanger, IconChevronRight, IconX, IconExternalLink } from "@tabler/icons-react";
+import Image from "next/image";
 
 // Merchandise data
 const merchData = [
@@ -13,7 +14,7 @@ const merchData = [
         title: "Night Tribe T Shirt",
         description: "Be part of the tribe with this exclusive VITopia 2026 dark theme tee.",
         price: "₹300",
-        image: "/tshirts/img8.avif",
+        image: "/tshirts/img8.webp",
         category: "T-Shirt",
         status: "available",
         link: "https://events.vitap.ac.in/e/vitopia-2025-t-shirts-70ec62a9-cbad-4124-938f-e59a699f1727"
@@ -23,7 +24,7 @@ const merchData = [
         title: "Butterfly T Shirt",
         description: "Metamorphosis theme tee featuring stunning butterfly artwork.",
         price: "₹300",
-        image: "/tshirts/img6.avif",
+        image: "/tshirts/img6.webp",
         category: "T-Shirt",
         status: "selling_fast",
         link: "https://events.vitap.ac.in/e/vitopia-2025-t-shirts-70ec62a9-cbad-4124-938f-e59a699f1727"
@@ -79,10 +80,11 @@ function MerchCard({ item, index, onClick }) {
             <div className="relative h-full bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-[var(--accent)]/30 flex flex-col">
                 {/* Image */}
                 <div className="absolute inset-0 overflow-hidden">
-                    <img
+                    <Image
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     {/* Gradient overlay - strengthened for readability */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90" />
@@ -156,10 +158,11 @@ function MerchModal({ item, onClose }) {
             >
                 {/* Image header */}
                 <div className="relative h-64 sm:h-72 overflow-hidden group">
-                    <img
+                    <Image
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
 
@@ -238,32 +241,9 @@ function MerchModal({ item, onClose }) {
 // Main page component
 function MerchandisePage() {
     const [selectedItem, setSelectedItem] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 500);
-        return () => clearTimeout(timer);
-    }, []);
 
-    if (isLoading) {
-        return (
-            <div className="bg-[#050505] min-h-screen flex items-center justify-center">
-                <motion.div
-                    animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.5, 1, 0.5]
-                    }}
-                    transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                    className="w-16 h-16 rounded-full border-2 border-[var(--accent)] border-t-transparent"
-                    style={{ animation: 'spin 1s linear infinite' }}
-                />
-            </div>
-        );
-    }
+
 
     return (
         <div className="bg-[#050505] min-h-screen">
