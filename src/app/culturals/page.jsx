@@ -15,8 +15,8 @@ const culturalsData = [
         description: "Solo and group dance performances across classical, western, and folk genres",
         image: "https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=600&h=400&fit=crop",
         teamSize: "1-8 members",
-        registrationStatus: "open",
-        date: "Feb 14-15, 2025",
+        registrationStatus: "closed",
+        date: "Feb 22-23, 2026",
         venue: "Main Auditorium"
     },
     {
@@ -26,7 +26,7 @@ const culturalsData = [
         image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
         teamSize: "1-6 members",
         registrationStatus: "closed",
-        date: "Feb 15-16, 2025",
+        date: "Feb 23-24, 2026",
         venue: "Open Air Theatre"
     },
     {
@@ -36,7 +36,7 @@ const culturalsData = [
         image: "https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&h=400&fit=crop",
         teamSize: "5-15 members",
         registrationStatus: "closed",
-        date: "Feb 16, 2025",
+        date: "Feb 24, 2026",
         venue: "Main Auditorium"
     },
     {
@@ -46,7 +46,7 @@ const culturalsData = [
         image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
         teamSize: "8-12 members",
         registrationStatus: "closed",
-        date: "Feb 17, 2025",
+        date: "Feb 25, 2026",
         venue: "Main Stage"
     },
     {
@@ -56,7 +56,7 @@ const culturalsData = [
         image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&h=400&fit=crop",
         teamSize: "Individual",
         registrationStatus: "closed",
-        date: "Feb 14, 2025",
+        date: "Feb 22, 2026",
         venue: "Art Gallery"
     },
     {
@@ -66,7 +66,7 @@ const culturalsData = [
         image: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&h=400&fit=crop",
         teamSize: "Individual",
         registrationStatus: "closed",
-        date: "Feb 14-17, 2025",
+        date: "Feb 22-25, 2026",
         venue: "Campus Wide"
     },
     {
@@ -76,7 +76,7 @@ const culturalsData = [
         image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=400&fit=crop",
         teamSize: "1-3 members",
         registrationStatus: "closed",
-        date: "Feb 15, 2025",
+        date: "Feb 23, 2026",
         venue: "Seminar Hall"
     },
     {
@@ -86,7 +86,7 @@ const culturalsData = [
         image: "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?w=600&h=400&fit=crop",
         teamSize: "Individual",
         registrationStatus: "closed",
-        date: "Feb 16, 2025",
+        date: "Feb 24, 2026",
         venue: "Open Air Theatre"
     }
 ];
@@ -276,7 +276,7 @@ function EventModal({ event, onClose }) {
                     {/* Action buttons */}
                     <div className="flex flex-col sm:flex-row gap-4">
                         <a
-                            href="https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/Vitopia+(Prime+Event+Rules)_2025+.pdf"
+                            href="/Rules-Regulations.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white py-4 px-6 rounded-xl transition-all font-medium border border-white/5"
@@ -466,7 +466,7 @@ function CulturalsPage() {
                                 Check out the rule book and prepare for the most exciting cultural fest of the year.
                             </p>
                             <a
-                                href="https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/Vitopia+(Prime+Event+Rules)_2025+.pdf"
+                                href="/Rules-Regulations.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 bg-[var(--primary)] text-black font-semibold px-8 py-4 rounded-full hover:bg-[var(--primary)]/90 transition-all hover:scale-105 active:scale-95"

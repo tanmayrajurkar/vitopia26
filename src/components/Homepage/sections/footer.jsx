@@ -114,7 +114,7 @@ export function Footer() {
                   color: "text-pink-400",
                   items: [
                     { label: 'Contact Us', href: '/contact' },
-                    { label: 'Rule Book', href: '#' },
+                    { label: 'Rule Book', href: '/Rules-Regulations.pdf' },
                     { label: 'Map', href: 'https://maps.app.goo.gl/PSy6LqAeRo16vSd68' }
                   ]
                 }

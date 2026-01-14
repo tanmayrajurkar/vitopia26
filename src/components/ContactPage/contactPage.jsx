@@ -70,16 +70,16 @@ export default function Contact() {
         {
             type: "Sports Coordinators",
             members: [
-                { name: "Mr. Sathwik Sangani", position: "Sports Student Coordinator", email: "sathwik.22bce7808@vitapstudent.ac.in", phone: "+91 93813 58149" },
-                { name: "Mr. Gujarathi Dheeraj", position: "Sports Student Coordinator", email: "dheeraj.22bce9581@vitapstudent.ac.in", phone: "+91 98851 29430" },
-            ],
+                { name: "Dr. Chillu Naresh", position: "Coordinator (SENSE)", email: "naresh.ch@vitap.ac.in" },
+                { name: "Dr. N Rama Chandra Rao", position: "PED", email: "ped@vitap.ac.in" },            ],
         },
         {
             type: "Accommodation & Transport",
             members: [
-                { name: "PAWAN KUMAR", position: "Accommodation Student Coordinator", email: "Pawan.22bce9637@vitapstudent.ac.in", phone: "+91 82470 15128" },
-                { name: "Aravind Kumar", position: "Transport Student Coordinator", email: "aravind.22bce20503@vitapstudent.ac.in", phone: "+91 72073 40228" },
-            ]
+                { name: "Dr. G D V Santhosh Kumar", position: "Coordinator - Boys Accommodation", email: "santhosh.gdv@vitap.ac.in" },
+                { name: "Dr. Malavika Ganta", position: "Coordinator - Girls Accommodation", email: "malavika.g@vitap.ac.in" },
+                { name: "Dr. K Mahipal Reddy", position: "Transport Coordinator", email: "mahipal.reddy@vitap.ac.in" },
+            ],
         }
     ];
 

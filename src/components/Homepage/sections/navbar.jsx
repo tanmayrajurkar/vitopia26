@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 import { MdArrowOutward } from "react-icons/md";
+import ComingSoonModal from "@/components/ui/ComingSoonModal";
 
 const navItems = [
   { title: "Home", href: "/" },
@@ -18,6 +19,7 @@ const navItems = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isComingSoonOpen, setComingSoonOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -84,6 +86,7 @@ export default function Navbar() {
               <div className="absolute -inset-3 bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 opacity-20 blur-xl group-hover:opacity-40 animate-pulse transition-opacity duration-300" />
 
               <button
+                onClick={() => setComingSoonOpen(true)}
                 className="relative block overflow-hidden"
                 style={{
                   clipPath: 'polygon(12% 0%, 100% 0%, 88% 100%, 0% 100%)'
@@ -119,6 +122,8 @@ export default function Navbar() {
           </button>
         </div>
       </motion.nav >
+
+      <ComingSoonModal isOpen={isComingSoonOpen} onClose={() => setComingSoonOpen(false)} />
 
       {/* Mobile Menu Overlay */}
       < AnimatePresence >
@@ -165,7 +170,7 @@ export default function Navbar() {
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  handleSignIn();
+                  setComingSoonOpen(true);
                 }}
                 className="relative block overflow-hidden"
                 style={{

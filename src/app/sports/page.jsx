@@ -693,7 +693,7 @@ function SportModal({ sport, onClose }) {
                     {/* Action buttons */}
                     <div className="flex flex-col sm:flex-row gap-4">
                         <a
-                            href="https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/Final+Rules+%26+Regulations.pdf"
+                            href="/Rules-Regulations.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white py-4 px-6 rounded-xl transition-all font-medium border border-white/5"
@@ -894,7 +894,7 @@ function SportsPage() {
                                     Register Now
                                 </a>
                                 <a
-                                    href="https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/Final+Rules+%26+Regulations.pdf"
+                                    href="/Rules-Regulations.pdf"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-2 bg-white/5 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-all"

@@ -23,7 +23,7 @@ function EventCard({ beach }) {
                 <a className="bg-blue-600 hover:bg-blue-800 text-white text-center font-bold py-2 px-4 rounded w-[80%]" href={beach.link} target='_blank'>
                     Registration
                 </a>
-                <a href={'https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/Vitopia+(Prime+Event+Rules)_2025+.pdf'}
+                <a href={'/Rules-Regulations.pdf'}
                     target='_blank'
                     className="transition ease-in duration-300 text-gray-500"
                     title="Rules and Regulations">
