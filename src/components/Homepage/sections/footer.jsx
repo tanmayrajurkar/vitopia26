@@ -144,8 +144,8 @@ export function Footer() {
                 <span className="text-xs font-outfit uppercase tracking-widest text-center md:text-left">
                   &copy; 2026 VITOPIA. Crafted with <span className="text-lime-400 animate-pulse">❤</span> by{' '}
                   <a href="https://linkedin.com/in/prasanna-pal-542992274" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Prasanna</a>,{' '}
-                  <a href="https://linkedin.com/in/tanvish-reddy" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Tanvish</a> &{' '}
-                  <a href="https://linkedin.com/in/tanmay-rajurkar-254305227" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Tanmay</a>
+                  <a href="https://linkedin.com/in/tanmay-rajurkar-254305227" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Tanmay</a> &{' '}
+                  <a href="https://linkedin.com/in/tanvish-reddy" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Tanvish</a>
                 </span>
               </div>
 
