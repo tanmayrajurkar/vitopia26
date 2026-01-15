@@ -783,7 +783,7 @@ function SportsPage() {
                             transition={{ duration: 3, repeat: Infinity }}
                         >
                             <IconTrophy className="text-[var(--primary)]" size={18} />
-                            <span className="text-[var(--primary)] text-sm font-medium">VITOPIA 2025 Sports</span>
+                            <span className="text-[var(--primary)] text-sm font-medium">VITOPIA 2026 Sports</span>
                         </motion.div>
 
                         {/* Title */}
