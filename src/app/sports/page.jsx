@@ -217,6 +217,20 @@ const sportsData = [
         venue: "Seminar Hall",
         entryFee: "₹400"
     },
+
+    // 39. Chess (men)
+    {
+        id: 39,
+        title: "Chess (men)",
+        description: "Any No. of Players • Fee: ₹400",
+        image: "/sports/chess.webp",
+        teamSize: "Individual",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
+        date: "12th & 13th Feb 2026",
+        venue: "Seminar Hall",
+        entryFee: "₹400"
+    },
     // 17. Kho-Kho Men
     {
         id: 17,
