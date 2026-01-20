@@ -284,7 +284,7 @@ const culturalsData = [
         externalFee: "500 per participant",
         internalFee: "250 per participant",
         description: "For the creative minds behind the fashion.",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
+        image: "/culturals/vstep weatern battle.webp",
         teamSize: "Solo/Group",
         registrationStatus: "open",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
