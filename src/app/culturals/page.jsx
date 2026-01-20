@@ -8,86 +8,288 @@ import { IconSparkles, IconUsers, IconCalendar, IconMapPin, IconChevronRight, Ic
 import Image from "next/image";
 
 // Cultural events data
+// Cultural events data
 const culturalsData = [
+    // --- Single Classic ---
     {
         id: 1,
-        title: "Dance Competition",
-        description: "Solo and group dance performances across classical, western, and folk genres",
+        group: "Group - I",
+        title: "V-Step Up: Classical Dance Battle",
+        category: "Solo",
+        firstPrize: "5,000",
+        secondPrize: "2,500",
+        externalFee: "200 per participant",
+        internalFee: "100 per participant",
+        description: "Showcase your classical dance skills in this solo battle.",
         image: "https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=600&h=400&fit=crop",
-        teamSize: "1-8 members",
-        registrationStatus: "closed",
-        date: "Feb 22-23, 2026",
+        teamSize: "Solo",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 22, 2026",
         venue: "Main Auditorium"
-    },
-    {
-        id: 2,
-        title: "Music Fest",
-        description: "Vocal and instrumental competitions featuring rock, classical, and fusion",
-        image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
-        teamSize: "1-6 members",
-        registrationStatus: "closed",
-        date: "Feb 23-24, 2026",
-        venue: "Open Air Theatre"
-    },
-    {
-        id: 3,
-        title: "Drama & Theatre",
-        description: "Stage plays, street plays, and mime performances",
-        image: "https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&h=400&fit=crop",
-        teamSize: "5-15 members",
-        registrationStatus: "closed",
-        date: "Feb 24, 2026",
-        venue: "Main Auditorium"
-    },
-    {
-        id: 4,
-        title: "Fashion Show",
-        description: "Showcase your creativity through themed fashion walks",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-        teamSize: "8-12 members",
-        registrationStatus: "closed",
-        date: "Feb 25, 2026",
-        venue: "Main Stage"
     },
     {
         id: 5,
-        title: "Art & Painting",
-        description: "Canvas painting, sketching, and digital art competitions",
-        image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&h=400&fit=crop",
-        teamSize: "Individual",
-        registrationStatus: "closed",
-        date: "Feb 22, 2026",
-        venue: "Art Gallery"
+        group: "Group - II",
+        title: "V-Rhythm: Classical Rhythm Battle",
+        category: "Solo",
+        firstPrize: "5,000",
+        secondPrize: "2,500",
+        externalFee: "200 per participant",
+        internalFee: "100 per participant",
+        description: "Express the rhythms of tradition in this solo classical event.",
+        image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=400&fit=crop",
+        teamSize: "Solo",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 23, 2026",
+        venue: "Music Hall"
+    },
+    {
+        id: 10,
+        group: "Group - III",
+        title: "V-Glam: Boys (Traditional)",
+        category: "Solo",
+        firstPrize: "5,000",
+        secondPrize: "2,500",
+        externalFee: "500 per participant",
+        internalFee: "250 per participant",
+        description: "Traditional fashion showcase for boys.",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=400&fit=crop",
+        teamSize: "Solo",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 24, 2026",
+        venue: "Ramp Stage"
+    },
+    {
+        id: 12,
+        group: "Group - III",
+        title: "V-Glam: Girls (Traditional)",
+        category: "Solo",
+        firstPrize: "5,000",
+        secondPrize: "2,500",
+        externalFee: "500 per participant",
+        internalFee: "250 per participant",
+        description: "Traditional fashion showcase for girls.",
+        image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&h=400&fit=crop",
+        teamSize: "Solo",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 24, 2026",
+        venue: "Ramp Stage"
+    },
+
+    // --- Single Western ---
+    {
+        id: 2,
+        group: "Group - I",
+        title: "V-Step Up: Western Dance Battle",
+        category: "Solo",
+        firstPrize: "5,000",
+        secondPrize: "2,500",
+        externalFee: "200 per participant",
+        internalFee: "100 per participant",
+        description: "Unleash your energy in the western dance solo battle.",
+        image: "https://plus.unsplash.com/premium_photo-1682089706055-d5ef14dc14e4?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        teamSize: "Solo",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 22, 2026",
+        venue: "Main Auditorium"
     },
     {
         id: 6,
-        title: "Photography",
-        description: "Capture the essence of VITOPIA through your lens",
-        image: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&h=400&fit=crop",
-        teamSize: "Individual",
-        registrationStatus: "closed",
-        date: "Feb 22-25, 2026",
-        venue: "Campus Wide"
+        group: "Group - II",
+        title: "V-Rhythm: Western Rhythm Battle",
+        category: "Solo",
+        firstPrize: "5,000",
+        secondPrize: "2,500",
+        externalFee: "200 per participant",
+        internalFee: "100 per participant",
+        description: "Show off your western musical prowess.",
+        image: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=600&h=400&fit=crop",
+        teamSize: "Solo",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 23, 2026",
+        venue: "Music Hall"
     },
     {
-        id: 7,
-        title: "Literary Events",
-        description: "Debates, poetry slam, creative writing, and quiz competitions",
-        image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=400&fit=crop",
-        teamSize: "1-3 members",
-        registrationStatus: "closed",
-        date: "Feb 23, 2026",
-        venue: "Seminar Hall"
+        id: 11,
+        group: "Group - III",
+        title: "V-Glam: Boys (Western)",
+        category: "Solo",
+        firstPrize: "5,000",
+        secondPrize: "2,500",
+        externalFee: "500 per participant",
+        internalFee: "250 per participant",
+        description: "Western fashion showcase for boys.",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=400&fit=crop",
+        teamSize: "Solo",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 24, 2026",
+        venue: "Ramp Stage"
+    },
+    {
+        id: 13,
+        group: "Group - III",
+        title: "V-Glam: Girls (Western)",
+        category: "Solo",
+        firstPrize: "5,000",
+        secondPrize: "2,500",
+        externalFee: "500 per participant",
+        internalFee: "250 per participant",
+        description: "Western fashion showcase for girls.",
+        image: "https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=600&h=400&fit=crop",
+        teamSize: "Solo",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 24, 2026",
+        venue: "Ramp Stage"
+    },
+    {
+        id: 15,
+        group: "Group - IV",
+        title: "V-Stand-Up Comedy",
+        category: "Solo",
+        firstPrize: "5,000",
+        secondPrize: "2,500",
+        externalFee: "200 per participant",
+        internalFee: "100 per participant",
+        description: "Tickle our funny bones with your stand-up set.",
+        image: "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?w=600&h=400&fit=crop",
+        teamSize: "Solo",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 24, 2026",
+        venue: "Open Air Theatre"
+    },
+
+    // --- Group Classic ---
+    {
+        id: 3,
+        group: "Group - I",
+        title: "V-Step Up: Classical Group Battle",
+        category: "Group",
+        firstPrize: "12,000",
+        secondPrize: "6,000",
+        externalFee: "200 per participant",
+        internalFee: "100 per participant",
+        description: "Synchronize and mesmerize with your group classical performance.",
+        image: "https://images.unsplash.com/photo-1768491815837-87a90744f9e6?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        teamSize: "Group",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 23, 2026",
+        venue: "Main Auditorium"
     },
     {
         id: 8,
-        title: "Stand-up Comedy",
-        description: "Make the crowd laugh with your original comedy sets",
-        image: "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?w=600&h=400&fit=crop",
-        teamSize: "Individual",
-        registrationStatus: "closed",
-        date: "Feb 24, 2026",
+        group: "Group - II",
+        title: "V-Rhythm: Battle of Bands (Classic)",
+        category: "Group",
+        firstPrize: "12,000",
+        secondPrize: "6,000",
+        externalFee: "200 per participant",
+        internalFee: "100 per participant",
+        description: "Classic rock and fusion bands face off.",
+        image: "https://images.unsplash.com/photo-1501612780327-45045538702b?w=600&h=400&fit=crop",
+        teamSize: "Group",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 22, 2026",
+        venue: "Main Stage"
+    },
+    {
+        id: 16,
+        group: "Group - IV",
+        title: "V-Nukkad Natak",
+        category: "Group",
+        firstPrize: "16,000",
+        secondPrize: "8,000",
+        externalFee: "1000 per group",
+        internalFee: "500 per group",
+        description: "Street play competition with a message.",
+        image: "https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&h=400&fit=crop",
+        teamSize: "Group",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 24, 2026",
+        venue: "Campus Grounds"
+    },
+
+    // --- Group Western ---
+    {
+        id: 4,
+        group: "Group - I",
+        title: "V-Step Up: Western Group Battle",
+        category: "Group",
+        firstPrize: "12,000",
+        secondPrize: "6,000",
+        externalFee: "200 per participant",
+        internalFee: "100 per participant",
+        description: "Set the stage on fire with your group western dance.",
+        image: "https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?w=600&h=400&fit=crop",
+        teamSize: "Group",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 23, 2026",
+        venue: "Main Auditorium"
+    },
+    {
+        id: 9,
+        group: "Group - II",
+        title: "V-Rhythm: Battle of Bands (Western)",
+        category: "Group",
+        firstPrize: "12,000",
+        secondPrize: "6,000",
+        externalFee: "200 per participant",
+        internalFee: "100 per participant",
+        description: "Western bands compete for the top spot.",
+        image: "https://images.unsplash.com/photo-1605340406960-f5b496c38b3d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        teamSize: "Group",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 22, 2026",
+        venue: "Main Stage"
+    },
+    {
+        id: 7,
+        group: "Group - II",
+        title: "V-Rhythm: A Cappella Battle Arena",
+        category: "Group",
+        firstPrize: "12,000",
+        secondPrize: "6,000",
+        externalFee: "1000 per group",
+        internalFee: "500 per group",
+        description: "Voices only! Compete in the ultimate A Cappella battle.",
+        image: "https://images.unsplash.com/photo-1684938164547-1e6cda59c28b?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        teamSize: "Group",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 22, 2026",
         venue: "Open Air Theatre"
+    },
+
+    // --- Others ---
+    {
+        id: 14,
+        group: "Group - III",
+        title: "V-Glam Designers",
+        category: "Solo/Group",
+        firstPrize: "12,000",
+        secondPrize: "6,000",
+        externalFee: "500 per participant",
+        internalFee: "250 per participant",
+        description: "For the creative minds behind the fashion.",
+        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
+        teamSize: "Solo/Group",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
+        date: "Feb 17 - 24, 2026",
+        venue: "Design Studio"
     }
 ];
 
@@ -152,15 +354,11 @@ function EventCard({ event, index, onClick }) {
 
                 {/* Registration status badge */}
                 {event.registrationStatus === 'open' ? (
-                    <a
-                        href={event.registrationLink || '#'}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="absolute top-4 right-4 z-20 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-md border shadow-lg transition-transform hover:scale-105 bg-[var(--primary)] text-black border-[var(--primary)] shadow-[var(--primary)]/20"
-                    >
-                        Register
-                    </a>
+                    <div className="absolute top-4 right-4 z-20 flex gap-2">
+                        <div className="px-3 py-1 rounded-full text-xs font-bold backdrop-blur-md bg-[var(--primary)] text-black shadow-lg shadow-[var(--primary)]/20">
+                            Open
+                        </div>
+                    </div>
                 ) : (
                     <div className="absolute top-4 right-4 z-20 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-md border shadow-lg transition-transform hover:scale-105 bg-black/80 text-white/60 border-white/10">
                         Closed
@@ -172,7 +370,7 @@ function EventCard({ event, index, onClick }) {
                     <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[var(--secondary)] transition-colors duration-300 leading-tight">
                         {event.title}
                     </h3>
-                    <p className="text-gray-200 text-base mb-4 line-clamp-2 leading-relaxed font-medium">
+                    <p className="text-gray-200 text-sm mb-4 line-clamp-2 leading-relaxed font-medium opacity-80">
                         {event.description}
                     </p>
 
@@ -219,7 +417,7 @@ function EventModal({ event, onClose }) {
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.95, opacity: 0, y: 20 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-hidden max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+                className="relative bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-hidden max-w-3xl w-full max-h-[90vh] overflow-y-auto"
             >
                 {/* Image header */}
                 <div className="relative h-64 sm:h-72 overflow-hidden group">
@@ -238,10 +436,11 @@ function EventModal({ event, onClose }) {
                     >
                         <IconX size={20} className="text-white group-hover/close:text-black" />
                     </button>
+
                 </div>
 
                 {/* Content */}
-                <div className="p-8 -mt-20 relative z-10">
+                <div className="p-8 -mt-10 relative z-10">
                     <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/5 rounded-2xl p-6 mb-8 shadow-2xl">
                         {/* Title */}
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">{event.title}</h2>
@@ -253,7 +452,7 @@ function EventModal({ event, onClose }) {
                         <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--secondary)]/30 transition-colors">
                             <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
                                 <IconUsers size={18} />
-                                Team Size
+                                Category
                             </div>
                             <div className="text-white text-lg font-medium">{event.teamSize}</div>
                         </div>
@@ -264,12 +463,31 @@ function EventModal({ event, onClose }) {
                             </div>
                             <div className="text-white text-lg font-medium">{event.date}</div>
                         </div>
+                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--secondary)]/30 transition-colors">
+                            <div className="flex items-center gap-2 text-[var(--accent)] text-sm mb-2 uppercase tracking-wider font-semibold">
+                                <span>🏆</span>
+                                First Prize
+                            </div>
+                            <div className="text-white text-xl font-bold">₹ {event.firstPrize}</div>
+                        </div>
+                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--secondary)]/30 transition-colors">
+                            <div className="flex items-center gap-2 text-[var(--secondary)] text-sm mb-2 uppercase tracking-wider font-semibold">
+                                <span>🥈</span>
+                                Second Prize
+                            </div>
+                            <div className="text-white text-xl font-bold">₹ {event.secondPrize}</div>
+                        </div>
+
                         <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--secondary)]/30 transition-colors col-span-1 sm:col-span-2">
                             <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
                                 <IconMapPin size={18} />
-                                Venue
+                                Registration Fee
                             </div>
-                            <div className="text-white text-lg font-medium">{event.venue}</div>
+                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                                <span className="text-white/80 text-base">Internal: <span className="text-white font-medium">₹ {event.internalFee}</span></span>
+                                <span className="hidden sm:block text-white/20">|</span>
+                                <span className="text-white/80 text-base">External: <span className="text-white font-medium">₹ {event.externalFee}</span></span>
+                            </div>
                         </div>
                     </div>
 
@@ -308,80 +526,14 @@ function EventModal({ event, onClose }) {
     );
 }
 
-// Coming Soon Popup component - non-dismissible
-function ComingSoonPopup() {
-    return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="fixed inset-0 bg-black/95 backdrop-blur-xl z-[40] flex items-center justify-center p-4"
-        >
-            <motion.div
-                initial={{ scale: 0.8, opacity: 0, y: 30 }}
-                animate={{ scale: 1, opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, type: "spring", damping: 20 }}
-                className="relative max-w-lg w-full"
-            >
-                {/* Glow effect */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-[var(--secondary)] via-[var(--accent)] to-[var(--primary)] rounded-3xl opacity-20 blur-2xl animate-pulse" />
 
-                {/* Main popup */}
-                <div className="relative bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-12 text-center overflow-hidden">
-                    {/* Background decoration */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--secondary)]/10 rounded-full blur-[60px]" />
-                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-[var(--accent)]/10 rounded-full blur-[40px]" />
-
-                    <div className="relative z-10">
-                        {/* Icon */}
-                        <motion.div
-                            animate={{ rotate: [0, 10, -10, 0] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                            className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[var(--secondary)]/10 border border-[var(--secondary)]/20 mb-6"
-                        >
-                            <IconSparkles className="text-[var(--secondary)]" size={40} />
-                        </motion.div>
-
-                        {/* Title */}
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                            Coming Soon
-                        </h2>
-
-                        {/* Subtitle */}
-                        <p className="text-white/60 text-lg mb-6">
-                            Cultural events are being finalized!
-                            Get ready for an amazing showcase of talent at VITopia '26.
-                        </p>
-
-                        {/* Animated dots */}
-                        <div className="flex items-center justify-center gap-2">
-                            {[0, 1, 2].map((i) => (
-                                <motion.div
-                                    key={i}
-                                    className="w-3 h-3 rounded-full bg-[var(--secondary)]"
-                                    animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
-                                    transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </motion.div>
-        </motion.div>
-    );
-}
 
 // Main page component
 function CulturalsPage() {
     const [selectedEvent, setSelectedEvent] = useState(null);
 
-
-
-
     return (
         <div className="bg-[#050505] min-h-screen">
-            {/* Coming Soon Popup - always visible, non-dismissible */}
-            <ComingSoonPopup />
-
             <Navbar />
 
             {/* Hero Section */}
@@ -451,9 +603,9 @@ function CulturalsPage() {
                         {/* Stats */}
                         <div className="flex flex-wrap justify-center gap-8 md:gap-16">
                             {[
-                                { value: 8, suffix: "+", label: "Events" },
+                                { value: 16, suffix: "+", label: "Events" },
                                 { value: 1000, suffix: "+", label: "Participants" },
-                                { value: 3, suffix: "", label: "Days" }
+                                { value: 8, suffix: "", label: "Days" }
                             ].map((stat, i) => (
                                 <motion.div
                                     key={i}
@@ -552,7 +704,7 @@ function CulturalsPage() {
                     <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
                 )}
             </AnimatePresence>
-        </div>
+        </div >
     );
 }
 
