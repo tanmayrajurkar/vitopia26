@@ -23,7 +23,7 @@ const culturalsData = [
         description: "Showcase your classical dance skills in this solo battle.",
         image: "https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=600&h=400&fit=crop",
         teamSize: "Solo",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 22, 2026",
         venue: "Main Auditorium"
@@ -40,7 +40,7 @@ const culturalsData = [
         description: "Express the rhythms of tradition in this solo classical event.",
         image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=400&fit=crop",
         teamSize: "Solo",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 23, 2026",
         venue: "Music Hall"
@@ -57,7 +57,7 @@ const culturalsData = [
         description: "Traditional fashion showcase for boys.",
         image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=400&fit=crop",
         teamSize: "Solo",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 24, 2026",
         venue: "Ramp Stage"
@@ -74,7 +74,7 @@ const culturalsData = [
         description: "Traditional fashion showcase for girls.",
         image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&h=400&fit=crop",
         teamSize: "Solo",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 24, 2026",
         venue: "Ramp Stage"
@@ -93,7 +93,7 @@ const culturalsData = [
         description: "Unleash your energy in the western dance solo battle.",
         image: "https://plus.unsplash.com/premium_photo-1682089706055-d5ef14dc14e4?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         teamSize: "Solo",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 22, 2026",
         venue: "Main Auditorium"
@@ -110,7 +110,7 @@ const culturalsData = [
         description: "Show off your western musical prowess.",
         image: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=600&h=400&fit=crop",
         teamSize: "Solo",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 23, 2026",
         venue: "Music Hall"
@@ -127,7 +127,7 @@ const culturalsData = [
         description: "Western fashion showcase for boys.",
         image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=400&fit=crop",
         teamSize: "Solo",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 24, 2026",
         venue: "Ramp Stage"
@@ -144,7 +144,7 @@ const culturalsData = [
         description: "Western fashion showcase for girls.",
         image: "https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=600&h=400&fit=crop",
         teamSize: "Solo",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 24, 2026",
         venue: "Ramp Stage"
@@ -161,7 +161,7 @@ const culturalsData = [
         description: "Tickle our funny bones with your stand-up set.",
         image: "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?w=600&h=400&fit=crop",
         teamSize: "Solo",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 24, 2026",
         venue: "Open Air Theatre"
@@ -180,7 +180,7 @@ const culturalsData = [
         description: "Synchronize and mesmerize with your group classical performance.",
         image: "https://images.unsplash.com/photo-1768491815837-87a90744f9e6?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         teamSize: "Group",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 23, 2026",
         venue: "Main Auditorium"
@@ -197,7 +197,7 @@ const culturalsData = [
         description: "Classic rock and fusion bands face off.",
         image: "https://images.unsplash.com/photo-1501612780327-45045538702b?w=600&h=400&fit=crop",
         teamSize: "Group",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 22, 2026",
         venue: "Main Stage"
@@ -214,7 +214,7 @@ const culturalsData = [
         description: "Street play competition with a message.",
         image: "https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&h=400&fit=crop",
         teamSize: "Group",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 24, 2026",
         venue: "Campus Grounds"
@@ -233,7 +233,7 @@ const culturalsData = [
         description: "Set the stage on fire with your group western dance.",
         image: "https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?w=600&h=400&fit=crop",
         teamSize: "Group",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 23, 2026",
         venue: "Main Auditorium"
@@ -250,7 +250,7 @@ const culturalsData = [
         description: "Western bands compete for the top spot.",
         image: "https://images.unsplash.com/photo-1605340406960-f5b496c38b3d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         teamSize: "Group",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 22, 2026",
         venue: "Main Stage"
@@ -267,7 +267,7 @@ const culturalsData = [
         description: "Voices only! Compete in the ultimate A Cappella battle.",
         image: "https://images.unsplash.com/photo-1684938164547-1e6cda59c28b?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         teamSize: "Group",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 22, 2026",
         venue: "Open Air Theatre"
@@ -286,7 +286,7 @@ const culturalsData = [
         description: "For the creative minds behind the fashion.",
         image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
         teamSize: "Solo/Group",
-        registrationStatus: "open",
+        registrationStatus: "closed",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-cultural-events-43169260-be68-424e-9274-edb3dc1d6a4d",
         date: "Feb 17 - 24, 2026",
         venue: "Design Studio"
@@ -333,7 +333,7 @@ function EventCard({ event, index, onClick }) {
             transition={{ duration: 0.5, delay: index * 0.05 }}
             whileHover={{ y: -8 }}
             onClick={() => onClick(event)}
-            className="group relative cursor-pointer h-[420px] w-full"
+            className="group relative cursor-pointer aspect-[2/3] w-full"
         >
             {/* Card glow effect */}
             <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--secondary)] to-[var(--accent)] rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500" />
@@ -361,7 +361,7 @@ function EventCard({ event, index, onClick }) {
                     </div>
                 ) : (
                     <div className="absolute top-4 right-4 z-20 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-md border shadow-lg transition-transform hover:scale-105 bg-black/80 text-white/60 border-white/10">
-                        Closed
+                        Opening Soon
                     </div>
                 )}
 
@@ -605,7 +605,7 @@ function CulturalsPage() {
                             {[
                                 { value: 16, suffix: "+", label: "Events" },
                                 { value: 1000, suffix: "+", label: "Participants" },
-                                { value: 8, suffix: "", label: "Days" }
+                                { value: 3, suffix: "+", label: "Days" }
                             ].map((stat, i) => (
                                 <motion.div
                                     key={i}
