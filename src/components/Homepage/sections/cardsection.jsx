@@ -57,7 +57,7 @@ const bentoItems = [
 
 export default function CardSection() {
   return (
-    <section id="card-section" className="py-24 bg-[#050505] relative overflow-hidden border-y border-white/10">
+    <section id="card-section" className="py-16 md:py-24 bg-[#050505] relative overflow-hidden border-y border-white/10">
       {/* Background Grid */}
       <div className="absolute inset-0 opacity-5">
         <div
@@ -81,14 +81,14 @@ export default function CardSection() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.4 }}
         >
-          <h2 className="text-5xl md:text-7xl font-anton text-white uppercase mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-anton text-white uppercase mb-4">
             EXPLORE <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-400">CATEGORIES</span>
           </h2>
           <div className="w-32 h-1 bg-gradient-to-r from-transparent via-lime-400 to-transparent mx-auto" />
         </motion.div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-12 gap-4 md:gap-6 auto-rows-[280px]">
+        <div className="grid grid-cols-12 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[280px]">
           {bentoItems.map((item, idx) => (
             <motion.div
               key={idx}
@@ -109,7 +109,7 @@ export default function CardSection() {
                       className="absolute inset-0 bg-cover bg-center opacity-70 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100"
                       style={{ backgroundImage: `url(${item.backgroundImage})` }}
                     />
-                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500" />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
                   </div>
                 )}
 
@@ -128,7 +128,7 @@ export default function CardSection() {
                 />}
 
                 {/* Content */}
-                <div className="relative h-full flex flex-col justify-between p-6 md:p-8">
+                <div className="relative h-full flex flex-col justify-between p-4 md:p-8">
                   {/* Icon - Top Right */}
                   <div className={`self-end text-white/20 group-hover:text-white/40 transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-12`}>
                     {item.icon}
@@ -136,10 +136,10 @@ export default function CardSection() {
 
                   {/* Text Content - Bottom */}
                   <div className="space-y-3">
-                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-anton uppercase tracking-tight text-white group-hover:translate-x-1 transition-transform duration-300">
+                    <h3 className="text-2xl md:text-4xl lg:text-5xl font-anton uppercase tracking-tight text-white group-hover:translate-x-1 transition-transform duration-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                       {item.title}
                     </h3>
-                    <p className="font-outfit text-base md:text-lg text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
+                    <p className="font-outfit text-sm md:text-lg text-gray-300 group-hover:text-gray-200 transition-colors duration-300 leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                       {item.description}
                     </p>
 

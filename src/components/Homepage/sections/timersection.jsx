@@ -9,7 +9,7 @@ const TimerSection = () => {
   const [isComingSoonOpen, setComingSoonOpen] = useState(false);
 
   return (
-    <section className="bg-[#050505] py-20 md:py-32 relative overflow-hidden border-y border-lime-400/20">
+    <section className="bg-[#050505] py-16 md:py-32 relative overflow-hidden border-y border-lime-400/20">
       {/* Static Grid Background */}
       <div className="absolute inset-0 opacity-10">
         <div
@@ -33,10 +33,10 @@ const TimerSection = () => {
           {/* CTA Side */}
           <div className="text-center lg:text-left space-y-8 flex-1">
             <div className="space-y-4">
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-anton text-white leading-none uppercase">
+              <h2 className="text-4xl md:text-7xl lg:text-8xl font-anton text-white leading-none uppercase">
                 THE COUNTDOWN
               </h2>
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-anton leading-none uppercase relative inline-block">
+              <h2 className="text-4xl md:text-7xl lg:text-8xl font-anton leading-none uppercase relative inline-block">
                 <span
                   className="text-transparent bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 bg-clip-text animate-pulse"
                   style={{
@@ -49,7 +49,7 @@ const TimerSection = () => {
               </h2>
             </div>
 
-            <p className="text-white/60 font-outfit text-lg md:text-xl max-w-md mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-white/60 font-outfit text-base md:text-xl max-w-md mx-auto lg:mx-0 leading-relaxed">
               The ultimate fest experience is just around the corner. Secure your spot now!
             </p>
 
@@ -66,7 +66,7 @@ const TimerSection = () => {
                 }}
               >
                 {/* Main Button */}
-                <div className="relative px-12 py-6 bg-gradient-to-r from-lime-400 via-green-400 to-lime-500 text-black font-anton text-xl md:text-2xl uppercase tracking-[0.2em] transition-all duration-300 group-hover:from-lime-300 group-hover:via-green-300 group-hover:to-lime-400">
+                <div className="relative px-10 py-5 md:px-12 md:py-6 bg-gradient-to-r from-lime-400 via-green-400 to-lime-500 text-black font-anton text-lg md:text-2xl uppercase tracking-[0.15em] md:tracking-[0.2em] transition-all duration-300 group-hover:from-lime-300 group-hover:via-green-300 group-hover:to-lime-400">
                   <div className="flex items-center gap-4 relative z-10">
                     <span className="group-hover:translate-x-1 transition-transform duration-300">GRAB PASSES</span>
                     <MdArrowOutward className="text-2xl group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300" />
@@ -81,8 +81,8 @@ const TimerSection = () => {
               </button>
 
               {/* Decorative Corner Elements */}
-              <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-lime-400 group-hover:w-8 group-hover:h-8 transition-all duration-300" />
-              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-lime-400 group-hover:w-8 group-hover:h-8 transition-all duration-300" />
+              <div className="absolute -top-2 -left-2 w-4 h-4 md:w-6 md:h-6 border-t-2 border-l-2 border-lime-400 group-hover:w-6 group-hover:h-6 md:group-hover:w-8 md:group-hover:h-8 transition-all duration-300 hidden sm:block" />
+              <div className="absolute -bottom-2 -right-2 w-4 h-4 md:w-6 md:h-6 border-b-2 border-r-2 border-lime-400 group-hover:w-6 group-hover:h-6 md:group-hover:w-8 md:group-hover:h-8 transition-all duration-300 hidden sm:block" />
 
               {/* Small Accent Dots */}
               {/* <div className="absolute -top-1 -right-1 w-2 h-2 bg-lime-400 rounded-full group-hover:scale-150 transition-transform duration-300" />
@@ -92,7 +92,7 @@ const TimerSection = () => {
 
           {/* Timer Component Wrapper */}
           <div className="w-full lg:w-auto flex-1 max-w-4xl">
-            <div className="relative p-8 md:p-12 lg:p-16">
+            <div className="relative p-4 md:p-12 lg:p-16">
               <CountdownTimer />
             </div>
           </div>

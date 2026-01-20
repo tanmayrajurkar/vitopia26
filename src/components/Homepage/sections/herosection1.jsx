@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
     return (
-        <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black py-20">
+        <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black py-12 md:py-20">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <Image
@@ -35,31 +35,31 @@ export default function HeroSection() {
                 >
                     {/* Badge */}
                     <motion.div
-                        className="inline-flex items-center border border-lime-400/30 rounded-full px-5 py-2 bg-lime-400/5 backdrop-blur-md mb-2"
+                        className="inline-flex items-center border border-lime-400/30 rounded-full px-4 py-2 bg-lime-400/5 backdrop-blur-md mb-4 md:mb-2"
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.4, delay: 0.15 }}
                     >
-                        <span className="text-lime-400 font-outfit font-semibold tracking-wider text-xs md:text-sm uppercase">
+                        <span className="text-lime-400 font-outfit font-semibold tracking-wider text-[10px] md:text-sm uppercase">
                             The Ultimate Fest of VIT-AP
                         </span>
                     </motion.div>
 
                     {/* Date Display - Highly Visible */}
                     <motion.div
-                        className="mb-6 flex flex-col items-center justify-center leading-none"
+                        className="mb-4 md:mb-6 flex flex-col items-center justify-center leading-none"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
-                        <span className="text-3xl md:text-5xl font-anton text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-white to-lime-400 drop-shadow-[0_0_15px_rgba(163,230,53,0.5)] tracking-wider">
+                        <span className="text-2xl md:text-5xl font-anton text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-white to-lime-400 drop-shadow-[0_0_15px_rgba(163,230,53,0.5)] tracking-wider">
                             22 - 24 FEB 2026
                         </span>
                     </motion.div>
 
                     {/* Main Title */}
                     <motion.h1
-                        className="text-[18vw] sm:text-[15vw] md:text-[12vw] leading-[0.85] font-anton text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/30 uppercase select-none tracking-tight mb-6"
+                        className="text-[16vw] sm:text-[15vw] md:text-[12vw] leading-[0.85] font-anton text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/30 uppercase select-none tracking-tight mb-4 md:mb-6"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
@@ -69,14 +69,14 @@ export default function HeroSection() {
 
                     {/* Subtitle */}
                     <motion.div
-                        className="flex items-center justify-center gap-3 md:gap-6 text-2xl md:text-5xl lg:text-6xl font-black italic tracking-tight mb-5"
+                        className="flex items-center justify-center gap-4 md:gap-6 text-xl md:text-5xl lg:text-6xl font-black italic tracking-tight mb-6 md:mb-5"
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
                     >
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-400 py-1 px-2">SPORT</span>
-                        <span className="mx-2 md:mx-4 text-3xl md:text-5xl font-light italic text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-white to-purple-400 drop-shadow-[0_0_10px_rgba(255,255,255,0.4)] px-2 py-1">×</span>
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 py-1 px-2">CULTURE</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-400 py-1 px-1 md:px-2">SPORT</span>
+                        <span className="text-xl md:text-5xl font-light italic text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-white to-purple-400 drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">×</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 py-1 px-1 md:px-2">CULTURE</span>
                     </motion.div>
 
                     {/* Description */}
@@ -93,15 +93,15 @@ export default function HeroSection() {
 
                     {/* CTA Buttons */}
                     <motion.div
-                        className="flex flex-col sm:flex-row items-center justify-center gap-4"
+                        className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-sm mx-auto sm:max-w-none"
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.5 }}
                     >
-                        <Link href={"/culturals"} className="w-[80%] cursor-pointer sm:w-auto px-10 py-4 bg-gradient-to-r from-lime-400 to-green-400 text-black font-anton text-base md:text-lg uppercase tracking-wider hover:from-lime-300 hover:to-green-300 transition-all duration-300 shadow-[0_0_30px_rgba(190,242,100,0.4)] hover:shadow-[0_0_50px_rgba(190,242,100,0.6)] hover:scale-105">
+                        <Link href={"/culturals"} className="w-full sm:w-auto text-center cursor-pointer px-8 py-3.5 md:px-10 md:py-4 bg-gradient-to-r from-lime-400 to-green-400 text-black font-anton text-sm md:text-lg uppercase tracking-wider hover:from-lime-300 hover:to-green-300 transition-all duration-300 shadow-[0_0_30px_rgba(190,242,100,0.4)] hover:shadow-[0_0_50px_rgba(190,242,100,0.6)] hover:scale-105">
                             View Events
                         </Link>
-                        <button onClick={() => { document.getElementById("card-section").scrollIntoView({ behavior: "smooth" }) }} className="w-[80%] cursor-pointer sm:w-auto px-10 py-4 border-2 border-white/20 text-white font-anton text-base md:text-lg uppercase tracking-wider hover:bg-white/10 hover:border-white/40 transition-all duration-300 backdrop-blur-sm">
+                        <button onClick={() => { document.getElementById("card-section").scrollIntoView({ behavior: "smooth" }) }} className="w-full sm:w-auto cursor-pointer px-8 py-3.5 md:px-10 md:py-4 border-2 border-white/20 text-white font-anton text-sm md:text-lg uppercase tracking-wider hover:bg-white/10 hover:border-white/40 transition-all duration-300 backdrop-blur-sm">
                             Highlights
                         </button>
                     </motion.div>

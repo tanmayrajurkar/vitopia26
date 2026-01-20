@@ -37,14 +37,14 @@ const CountdownTimer = () => {
       <span suppressHydrationWarning className="font-anton text-[2rem] sm:text-[3rem] md:text-[5rem] lg:text-[7rem] font-black leading-none text-white">
         {value < 10 ? `0${value}` : value}
       </span>
-      <small className="font-outfit text-[0.6rem] sm:text-xs md:text-sm lg:text-base text-lime-400 uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] mt-1 md:mt-2">
+      <small className="font-outfit text-[0.65rem] sm:text-xs md:text-sm lg:text-base text-lime-400 uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] mt-1 md:mt-2 font-medium">
         {interval}
       </small>
     </div>
   ));
 
   return (
-    <div className="flex flex-nowrap gap-2 sm:gap-4 md:gap-12 lg:gap-16 justify-center">
+    <div className="flex flex-nowrap gap-3 sm:gap-4 md:gap-12 lg:gap-16 justify-center">
       {timerComponents.length ? (
         timerComponents
       ) : (

@@ -22,7 +22,7 @@ export function Footer() {
       {/* Scrolling Ticker */}
       <div className="w-full bg-lime-400 py-3 overflow-hidden flex relative z-20">
         <motion.div
-          className="flex gap-8 whitespace-nowrap text-black font-anton text-lg uppercase tracking-widest items-center"
+          className="flex gap-6 md:gap-8 whitespace-nowrap text-black font-anton text-sm md:text-lg uppercase tracking-widest items-center"
           animate={{ x: "-50%" }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         >
@@ -54,7 +54,7 @@ export function Footer() {
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 mb-16 md:mb-20">
 
             {/* Brand/About/Newsletter Column */}
             <div className="lg:col-span-4 space-y-8">
@@ -66,7 +66,7 @@ export function Footer() {
                   alt="VITOPIA Logo"
                 />
               </Link>
-              <p className="text-white/60 font-outfit text-lg max-w-md leading-relaxed">
+              <p className="text-white/60 font-outfit text-base md:text-lg max-w-md leading-relaxed">
                 The ultimate fusion of <span className="text-white">Technology</span>, <span className="text-white">Sports</span>, and <span className="text-white">Culture</span>.
               </p>
 
@@ -79,7 +79,7 @@ export function Footer() {
                   placeholder="Enter your email"
                   className="w-full bg-black/40 border border-white/10 text-white px-4 py-3 rounded-l-lg focus:outline-none focus:border-lime-400 transition-colors font-outfit"
                 />
-                <button className="bg-lime-400 hover:bg-lime-500 text-black px-4 rounded-r-lg transition-colors flex items-center justify-center">
+                <button className="bg-lime-400 hover:bg-lime-500 text-black px-5 py-3 rounded-r-lg transition-colors flex items-center justify-center">
                   <IconArrowRight size={20} />
                 </button>
               </div>
@@ -119,12 +119,12 @@ export function Footer() {
                   ]
                 }
               ].map((section, idx) => (
-                <div key={idx} className="space-y-6">
-                  <h3 className={`text-xl font-anton uppercase tracking-wider ${section.color}`}>{section.title}</h3>
-                  <ul className="space-y-3">
+                <div key={idx} className="space-y-4 md:space-y-6">
+                  <h3 className={`text-lg md:text-xl font-anton uppercase tracking-wider ${section.color}`}>{section.title}</h3>
+                  <ul className="space-y-2 md:space-y-3">
                     {section.items.map((item) => (
                       <li key={item.label}>
-                        <Link href={item.href} className="text-white/50 font-outfit hover:text-white transition-all flex items-center gap-2 group text-base">
+                        <Link href={item.href} className="text-white/50 font-outfit hover:text-white transition-all flex items-center gap-2 group text-sm md:text-base py-0.5">
                           <span className={`w-0 h-[2px] ${section.color.replace('text-', 'bg-')} transition-all duration-300 group-hover:w-4`} />
                           {item.label}
                         </Link>
@@ -137,8 +137,8 @@ export function Footer() {
           </div>
 
           {/* Compact Footer Bottom - Single Row */}
-          <div className="border-t border-white/10 pt-6 pb-4">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="border-t border-white/10 pt-5 md:pt-6 pb-4">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
               {/* Copyright - Left */}
               <div className="flex items-center px-4 py-2 border border-white/10 rounded-full text-white/50 hover:bg-white/5 transition-all">
                 <span className="text-xs font-outfit uppercase tracking-widest text-center md:text-left">
@@ -162,7 +162,7 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 transition-all duration-300 hover:text-white hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] ${social.color}`}
+                    className={`w-11 h-11 md:w-10 md:h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 transition-all duration-300 hover:text-white hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] ${social.color}`}
                   >
                     <social.icon size={20} />
                   </a>
