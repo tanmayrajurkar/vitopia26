@@ -7,8 +7,6 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { IconSparkles, IconUsers, IconCalendar, IconMapPin, IconChevronRight, IconX, IconExternalLink } from "@tabler/icons-react";
 import Image from "next/image";
 
-// Cultural events data
-// Cultural events data
 const culturalsData = [
     // --- Single Classic ---
     {
@@ -354,11 +352,15 @@ function EventCard({ event, index, onClick }) {
 
                 {/* Registration status badge */}
                 {event.registrationStatus === 'open' ? (
-                    <div className="absolute top-4 right-4 z-20 flex gap-2">
-                        <div className="px-3 py-1 rounded-full text-xs font-bold backdrop-blur-md bg-[var(--primary)] text-black shadow-lg shadow-[var(--primary)]/20">
-                            Register
-                        </div>
-                    </div>
+                    <a
+                        href={event.registrationLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="absolute top-4 right-4 z-20 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-md border shadow-lg transition-transform hover:scale-105 bg-[var(--primary)] text-black border-[var(--primary)] shadow-[var(--primary)]/20"
+                    >
+                        Register
+                    </a>
                 ) : (
                     <div className="absolute top-4 right-4 z-20 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-md border shadow-lg transition-transform hover:scale-105 bg-black/80 text-white/60 border-white/10">
                         Opening Soon
