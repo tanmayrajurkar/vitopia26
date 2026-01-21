@@ -356,7 +356,7 @@ function EventCard({ event, index, onClick }) {
                 {event.registrationStatus === 'open' ? (
                     <div className="absolute top-4 right-4 z-20 flex gap-2">
                         <div className="px-3 py-1 rounded-full text-xs font-bold backdrop-blur-md bg-[var(--primary)] text-black shadow-lg shadow-[var(--primary)]/20">
-                            Open
+                            Registration
                         </div>
                     </div>
                 ) : (
