@@ -63,7 +63,7 @@ export default function Contact() {
             members: [
                 { name: "Dr. S Gopikrishnan", position: "Convenor", email: "convenor.vitopia@vitap.ac.in" },
                 { name: "Dr. Karishma Bisht", position: "Co Convenor – Cultural Events", email: "karishma.b@vitap.ac.in" },
-                { name: "Dr. Guruprakash Jayabalasamy", position: "Co Convenor – Pro Show Events", email: "guruprakash@vitap.ac.in" },
+                { name: "Dr. Guruprakash Jayabalasamy", position: "Co Convenor – Pro Show Events", email: "guruprakash.j@vitap.ac.in" },
                 { name: "Dr. U M Gopala Krishna", position: "Co Convenor – Sports", email: "gopalkrishna.um@vitap.ac.in", phone: "+91 81421 77143" },
             ],
         },
@@ -71,7 +71,7 @@ export default function Contact() {
             type: "Sports Coordinators",
             members: [
                 { name: "Dr. Chillu Naresh", position: "Coordinator (SENSE)", email: "naresh.ch@vitap.ac.in" },
-                { name: "Dr. N Rama Chandra Rao", position: "PED", email: "ped@vitap.ac.in" },            ],
+                { name: "Dr. N Rama Chandra Rao", position: "PED", email: "ped@vitap.ac.in" },],
         },
         {
             type: "Accommodation & Transport",
