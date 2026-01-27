@@ -11,23 +11,25 @@ import Image from "next/image";
 const merchData = [
     {
         id: 1,
-        title: "Night Tribe T Shirt",
-        description: "Be part of the tribe with this exclusive VITopia 2026 dark theme tee.",
+        title: "VITOPIA '26 Official Tee",
+        description: "The official merchandise for VITOPIA 2026. Featuring a gritty, urban design that captures the spirit of the fest.",
         price: "₹300",
-        image: "/tshirts/img8.webp",
+        image: "/tshirts/T1.jpeg",
+        slides: ["/tshirts/T1-1.jpeg", "/tshirts/T1-2.jpeg"],
         category: "T-Shirt",
         status: "available",
-        link: "https://events.vitap.ac.in/e/vitopia-2025-t-shirts-70ec62a9-cbad-4124-938f-e59a699f1727"
+        link: "https://events.vitap.ac.in/e/merchandise-sales-t-shirts-of-vitopia-2026-9725c9cf-f606-4f66-b3bd-ecefede5d7b1"
     },
     {
         id: 2,
-        title: "Butterfly T Shirt",
-        description: "Metamorphosis theme tee featuring stunning butterfly artwork.",
+        title: "Limited Edition Graphic Tee",
+        description: "Exclusive limited run design with premium cotton blend. Stand out from the crowd.",
         price: "₹300",
-        image: "/tshirts/img6.webp",
+        image: "/tshirts/T2.jpeg",
+        slides: ["/tshirts/T2-1.jpeg", "/tshirts/T2-2.jpeg"],
         category: "T-Shirt",
-        status: "selling_fast",
-        link: "https://events.vitap.ac.in/e/vitopia-2025-t-shirts-70ec62a9-cbad-4124-938f-e59a699f1727"
+        status: "available",
+        link: "https://events.vitap.ac.in/e/merchandise-sales-t-shirts-of-vitopia-2026-9725c9cf-f606-4f66-b3bd-ecefede5d7b1"
     }
 ];
 
@@ -63,6 +65,18 @@ function AnimatedCounter({ value, suffix = "" }) {
 
 // Merch card component
 function MerchCard({ item, index, onClick }) {
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    useEffect(() => {
+        if (!item.slides || item.slides.length === 0) return;
+
+        const interval = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % item.slides.length);
+        }, 2500); // Switch every 2.5 seconds
+
+        return () => clearInterval(interval);
+    }, [item.slides]);
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -78,14 +92,26 @@ function MerchCard({ item, index, onClick }) {
 
             {/* Main card */}
             <div className="relative h-full bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-[var(--accent)]/30 flex flex-col">
-                {/* Image */}
+                {/* Image Slideshow */}
                 <div className="absolute inset-0 overflow-hidden">
-                    <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
+                    <AnimatePresence>
+                        <motion.div
+                            key={currentSlide}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="absolute inset-0 h-full w-full"
+                        >
+                            <Image
+                                src={item.slides ? item.slides[currentSlide] : item.image}
+                                alt={item.title}
+                                fill
+                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                        </motion.div>
+                    </AnimatePresence>
+
                     {/* Gradient overlay - strengthened for readability */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90" />
                 </div>
@@ -120,18 +146,10 @@ function MerchCard({ item, index, onClick }) {
                             <span className="bg-white/10 px-2 py-1 rounded text-white/70">M</span>
                             <span className="bg-white/10 px-2 py-1 rounded text-white/70">L</span>
                             <span className="bg-white/10 px-2 py-1 rounded text-white/70">XL</span>
+                            <span className="bg-white/10 px-2 py-1 rounded text-white/70">XXL</span>
                         </div>
                     </div>
                 </div>
-
-                {/* Hover arrow */}
-                <motion.div
-                    className="absolute bottom-6 right-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ repeat: Infinity, duration: 1.5 }}
-                >
-                    <IconChevronRight className="text-[var(--accent)]" size={24} />
-                </motion.div>
             </div>
         </motion.div>
     );
@@ -204,7 +222,7 @@ function MerchModal({ item, onClose }) {
                                 <IconHanger size={18} />
                                 Fit
                             </div>
-                            <div className="text-white text-lg font-medium">Oversized / Unisex</div>
+                            <div className="text-white text-lg font-medium">Unisex</div>
                         </div>
                     </div>
 
@@ -229,70 +247,8 @@ function MerchModal({ item, onClose }) {
                             </a>
                         )}
                         <p className="text-center text-white/30 text-xs">
-                            *Pickup available at University Campus counter from Feb 14th
+                            *Pickup available at University Campus counter soon
                         </p>
-                    </div>
-                </div>
-            </motion.div>
-        </motion.div>
-    );
-}
-
-// Coming Soon Popup component - non-dismissible
-function ComingSoonPopup() {
-    return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="fixed inset-0 bg-black/95 backdrop-blur-xl z-[40] flex items-center justify-center p-4"
-        >
-            <motion.div
-                initial={{ scale: 0.8, opacity: 0, y: 30 }}
-                animate={{ scale: 1, opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, type: "spring", damping: 20 }}
-                className="relative max-w-lg w-full"
-            >
-                {/* Glow effect */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-[var(--accent)] via-[#8b5cf6] to-[var(--primary)] rounded-3xl opacity-20 blur-2xl animate-pulse" />
-
-                {/* Main popup */}
-                <div className="relative bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-12 text-center overflow-hidden">
-                    {/* Background decoration */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--accent)]/10 rounded-full blur-[60px]" />
-                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-[#8b5cf6]/10 rounded-full blur-[40px]" />
-
-                    <div className="relative z-10">
-                        {/* Icon */}
-                        <motion.div
-                            animate={{ rotate: [0, 10, -10, 0] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                            className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/20 mb-6"
-                        >
-                            <IconShoppingBag className="text-[var(--accent)]" size={40} />
-                        </motion.div>
-
-                        {/* Title */}
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                            Coming Soon
-                        </h2>
-
-                        {/* Subtitle */}
-                        <p className="text-white/60 text-lg mb-6">
-                            Our exclusive merch store is getting ready!
-                            Stay tuned for amazing VITopia '26 merchandise.
-                        </p>
-
-                        {/* Animated dots */}
-                        <div className="flex items-center justify-center gap-2">
-                            {[0, 1, 2].map((i) => (
-                                <motion.div
-                                    key={i}
-                                    className="w-3 h-3 rounded-full bg-[var(--accent)]"
-                                    animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
-                                    transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
-                                />
-                            ))}
-                        </div>
                     </div>
                 </div>
             </motion.div>
@@ -309,8 +265,6 @@ function MerchandisePage() {
 
     return (
         <div className="bg-[#050505] min-h-screen">
-            {/* Coming Soon Popup - always visible, non-dismissible */}
-            <ComingSoonPopup />
 
             <Navbar />
 
