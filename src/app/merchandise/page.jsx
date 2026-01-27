@@ -117,7 +117,18 @@ function MerchCard({ item, index, onClick }) {
                 </div>
 
                 {/* Status badge */}
-                {item.status !== 'available' && (
+                {/* Status badge / Purchase tag */}
+                {item.status === 'available' ? (
+                    <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="absolute top-4 right-4 z-20 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-md border shadow-lg transition-transform hover:scale-105 bg-[var(--primary)] text-black border-[var(--primary)] shadow-[var(--primary)]/20"
+                    >
+                        Purchase
+                    </a>
+                ) : (
                     <div className={`absolute top-4 right-4 z-20 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-md ${item.status === 'sold_out'
                         ? 'bg-red-500/20 text-red-500 border border-red-500/20'
                         : 'bg-yellow-500/20 text-yellow-500 border border-yellow-500/20'
