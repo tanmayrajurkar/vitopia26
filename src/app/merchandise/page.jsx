@@ -14,8 +14,7 @@ const merchData = [
         title: "VITOPIA '26 Official Tee",
         description: "The official merchandise for VITOPIA 2026. Featuring a gritty, urban design that captures the spirit of the fest.",
         price: "₹300",
-        image: "/tshirts/T1.jpeg",
-        slides: ["/tshirts/T1-1.jpeg", "/tshirts/T1-2.jpeg"],
+        image: "/tshirts/Black-final.jpg.jpeg",
         category: "T-Shirt",
         status: "available",
         link: "https://events.vitap.ac.in/e/merchandise-sales-t-shirts-of-vitopia-2026-9725c9cf-f606-4f66-b3bd-ecefede5d7b1"
@@ -25,8 +24,7 @@ const merchData = [
         title: "Limited Edition Graphic Tee",
         description: "Exclusive limited run design with premium cotton blend. Stand out from the crowd.",
         price: "₹300",
-        image: "/tshirts/T2.jpeg",
-        slides: ["/tshirts/T2-1.jpeg", "/tshirts/T2-2.jpeg"],
+        image: "/tshirts/Grey-final.jpg.jpeg",
         category: "T-Shirt",
         status: "available",
         link: "https://events.vitap.ac.in/e/merchandise-sales-t-shirts-of-vitopia-2026-9725c9cf-f606-4f66-b3bd-ecefede5d7b1"
@@ -63,20 +61,8 @@ function AnimatedCounter({ value, suffix = "" }) {
     return <span ref={ref}>{count}{suffix}</span>;
 }
 
-// Merch card component
+// MerchCard component
 function MerchCard({ item, index, onClick }) {
-    const [currentSlide, setCurrentSlide] = useState(0);
-
-    useEffect(() => {
-        if (!item.slides || item.slides.length === 0) return;
-
-        const interval = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % item.slides.length);
-        }, 2500); // Switch every 2.5 seconds
-
-        return () => clearInterval(interval);
-    }, [item.slides]);
-
     return (
         <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -85,32 +71,20 @@ function MerchCard({ item, index, onClick }) {
             transition={{ duration: 0.5, delay: index * 0.05 }}
             whileHover={{ y: -8 }}
             onClick={() => onClick(item)}
-            className="group relative cursor-pointer h-[420px] w-full"
+            className="group relative cursor-pointer w-full"
         >
             {/* Card glow effect */}
             <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500" />
 
             {/* Main card */}
-            <div className="relative h-full bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-[var(--accent)]/30 flex flex-col">
-                {/* Image Slideshow */}
-                <div className="absolute inset-0 overflow-hidden">
-                    <AnimatePresence>
-                        <motion.div
-                            key={currentSlide}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="absolute inset-0 h-full w-full"
-                        >
-                            <Image
-                                src={item.slides ? item.slides[currentSlide] : item.image}
-                                alt={item.title}
-                                fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-110"
-                            />
-                        </motion.div>
-                    </AnimatePresence>
+            <div className="relative h-auto bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-[var(--accent)]/30 flex flex-col">
+                {/* Image */}
+                <div className="relative w-full">
+                    <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
 
                     {/* Gradient overlay - strengthened for readability */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90" />
@@ -367,7 +341,7 @@ function MerchandisePage() {
                     {/* Merch grid - Centered with Flex */}
                     <div className="flex flex-wrap justify-center gap-10">
                         {merchData.map((item, index) => (
-                            <div key={item.id} className="w-full sm:w-[calc(50%-20px)] lg:w-[calc(25%-20px)] min-w-[300px] max-w-[380px]">
+                            <div key={item.id} className="w-full sm:w-[calc(50%-20px)] lg:w-[calc(50%-20px)] min-w-[300px] max-w-[600px]">
                                 <MerchCard
                                     item={item}
                                     index={index}
