@@ -18,7 +18,7 @@ const navItems = [
     dropdown: [
       { title: "2023", href: "https://vitopia-2023.pages.dev/" },
       { title: "2024", href: "https://vitopia-2024-next.vercel.app/" },
-      { title: "2025", href: "#" },
+      { title: "2025", href: "https://vitopia2025-vitap.vercel.app/" },
     ]
   },
   { title: "Contact", href: "/contact" },
