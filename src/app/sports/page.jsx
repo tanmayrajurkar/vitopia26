@@ -20,7 +20,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "11th to 17th Feb 2026",
         venue: "VIT-AP Sports Ground",
-        entryFee: "₹5000"
+        entryFee: "₹5000",
+        firstPrize: "50,000",
+        secondPrize: "30,000"
     },
     // 2. Football
     {
@@ -33,7 +35,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "VIT-AP Football Arena",
-        entryFee: "₹5000"
+        entryFee: "₹5000",
+        firstPrize: "50,000",
+        secondPrize: "30,000"
     },
     // 3. Volleyball Men
     {
@@ -46,7 +50,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "Volleyball Court",
-        entryFee: "₹4000"
+        entryFee: "₹4000",
+        firstPrize: "30,000",
+        secondPrize: "15,000"
     },
     // 4. Volleyball Women
     {
@@ -59,7 +65,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "Volleyball Court",
-        entryFee: "₹4000"
+        entryFee: "₹4000",
+        firstPrize: "30,000",
+        secondPrize: "15,000"
     },
     // 5. Basketball Men
     {
@@ -72,7 +80,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "Basketball Court",
-        entryFee: "₹4000"
+        entryFee: "₹4000",
+        firstPrize: "30,000",
+        secondPrize: "15,000"
     },
     // 6. Basketball Women
     {
@@ -85,7 +95,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "Basketball Court",
-        entryFee: "₹4000"
+        entryFee: "₹4000",
+        firstPrize: "30,000",
+        secondPrize: "15,000"
     },
     // 7. Badminton (Singles) Men
     {
@@ -98,7 +110,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "Indoor Badminton Court",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 8. Badminton (Doubles) Men
     {
@@ -111,7 +125,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "Indoor Badminton Court",
-        entryFee: "₹800"
+        entryFee: "₹800",
+        firstPrize: "10,000",
+        secondPrize: "5,000"
     },
     // 9. Badminton (Singles) Women
     {
@@ -124,7 +140,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "Indoor Badminton Court",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 10. Badminton (Doubles) Women
     {
@@ -137,7 +155,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "Indoor Badminton Court",
-        entryFee: "₹800"
+        entryFee: "₹800",
+        firstPrize: "10,000",
+        secondPrize: "5,000"
     },
     // 11. Table Tennis (Singles) Men
     {
@@ -150,7 +170,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "TT Hall",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 12. Table Tennis (Singles) Women
     {
@@ -163,7 +185,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "TT Hall",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 13. Table Tennis (Doubles) Men
     {
@@ -176,7 +200,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "TT Hall",
-        entryFee: "₹800"
+        entryFee: "₹800",
+        firstPrize: "10,000",
+        secondPrize: "5,000"
     },
     // 14. Table Tennis (Doubles) Women
     {
@@ -189,7 +215,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "TT Hall",
-        entryFee: "₹800"
+        entryFee: "₹800",
+        firstPrize: "10,000",
+        secondPrize: "5,000"
     },
     // 15. Lawn Tennis (Singles) Men
     {
@@ -202,7 +230,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "Tennis Court",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "10,000",
+        secondPrize: "5,000"
     },
     // 16. Chess (Women)
     {
@@ -215,7 +245,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "Seminar Hall",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
 
     // 39. Chess (men)
@@ -229,7 +261,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "Seminar Hall",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 17. Kho-Kho Men
     {
@@ -242,7 +276,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "Kho-Kho Court",
-        entryFee: "₹4000"
+        entryFee: "₹4000",
+        firstPrize: "30,000",
+        secondPrize: "15,000"
     },
     // 18. Kho-Kho Women
     {
@@ -255,7 +291,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
         venue: "Kho-Kho Court",
-        entryFee: "₹4000"
+        entryFee: "₹4000",
+        firstPrize: "30,000",
+        secondPrize: "15,000"
     },
     // 19. Kabaddi Women
     {
@@ -268,7 +306,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "14th & 15th Feb 2026",
         venue: "Kabaddi Mat",
-        entryFee: "₹4000"
+        entryFee: "₹4000",
+        firstPrize: "30,000",
+        secondPrize: "15,000"
     },
     // 20. Kabaddi Men
     {
@@ -281,7 +321,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "14th & 15th Feb 2026",
         venue: "Kabaddi Mat",
-        entryFee: "₹4000"
+        entryFee: "₹4000",
+        firstPrize: "30,000",
+        secondPrize: "15,000"
     },
     {
         id: 21,
@@ -293,7 +335,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "14th Feb 2026",
         venue: "Throwball Court",
-        entryFee: "₹3000"
+        entryFee: "₹3000",
+        firstPrize: "30,000",
+        secondPrize: "15,000"
     },
     {
         id: 22,
@@ -305,7 +349,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Athletics Track",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     {
         id: 23,
@@ -317,7 +363,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Athletics Track",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     {
         id: 24,
@@ -329,7 +377,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Athletics Track",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     {
         id: 25,
@@ -341,7 +391,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Field Events Area",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 26. Shotput Women
     {
@@ -354,7 +406,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Field Events Area",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 27. 100m Meters Men
     {
@@ -367,7 +421,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Athletics Track",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 28. 400m Meters Men
     {
@@ -380,7 +436,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Athletics Track",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 29. 4x100m Relay Men
     {
@@ -393,7 +451,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Athletics Track",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 30. 100 Meters Women
     {
@@ -406,7 +466,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Athletics Track",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 31. 400 Meters Women
     {
@@ -419,7 +481,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Athletics Track",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 32. 4x100m Relay Women
     {
@@ -432,7 +496,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Athletics Track",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 33. Discus Throw Men
     {
@@ -445,7 +511,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Field Events Area",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 34. Discus Throw Women
     {
@@ -458,7 +526,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Field Events Area",
-        entryFee: "₹400"
+        entryFee: "₹400",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 35. Power Lifting 59-64kg Men
     {
@@ -471,7 +541,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Gymnasium",
-        entryFee: "₹500"
+        entryFee: "₹500",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 36. Power Lifting 65-74kg Men
     {
@@ -484,7 +556,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Gymnasium",
-        entryFee: "₹500"
+        entryFee: "₹500",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 37. Power Lifting 75-84kg Men
     {
@@ -497,7 +571,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Gymnasium",
-        entryFee: "₹500"
+        entryFee: "₹500",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     },
     // 38. Power Lifting above 85kg Men
     {
@@ -510,7 +586,9 @@ const sportsData = [
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "15th Feb 2026",
         venue: "Gymnasium",
-        entryFee: "₹500"
+        entryFee: "₹500",
+        firstPrize: "5,000",
+        secondPrize: "3,000"
     }
 ];
 
@@ -683,17 +761,24 @@ function SportModal({ sport, onClose }) {
                         </div>
                         <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--primary)]/30 transition-colors">
                             <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
-                                <IconTrophy size={18} />
-                                Entry Fee
-                            </div>
-                            <div className="text-[var(--primary)] text-lg font-bold">{sport.entryFee}</div>
-                        </div>
-                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--primary)]/30 transition-colors">
-                            <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
                                 <IconCalendar size={18} />
                                 Date
                             </div>
                             <div className="text-white text-lg font-medium">{sport.date}</div>
+                        </div>
+                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--primary)]/30 transition-colors">
+                            <div className="flex items-center gap-2 text-[var(--primary)] text-sm mb-2 uppercase tracking-wider font-semibold">
+                                <span>🥇</span>
+                                First Prize
+                            </div>
+                            <div className="text-white text-xl font-bold">₹ {sport.firstPrize}</div>
+                        </div>
+                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--primary)]/30 transition-colors">
+                            <div className="flex items-center gap-2 text-white/60 text-sm mb-2 uppercase tracking-wider font-semibold">
+                                <span>🥈</span>
+                                Second Prize
+                            </div>
+                            <div className="text-white text-xl font-bold">₹ {sport.secondPrize}</div>
                         </div>
                         <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--primary)]/30 transition-colors">
                             <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
@@ -701,6 +786,13 @@ function SportModal({ sport, onClose }) {
                                 Venue
                             </div>
                             <div className="text-white text-lg font-medium">{sport.venue}</div>
+                        </div>
+                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--primary)]/30 transition-colors">
+                            <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
+                                <IconTrophy size={18} />
+                                Entry Fee
+                            </div>
+                            <div className="text-[var(--primary)] text-lg font-bold">{sport.entryFee}</div>
                         </div>
                     </div>
 
