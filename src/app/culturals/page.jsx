@@ -496,7 +496,7 @@ function EventModal({ event, onClose }) {
                     {/* Action buttons */}
                     <div className="flex flex-col sm:flex-row gap-4">
                         <a
-                            href="/Rules-Regulations.pdf"
+                            href="/VITopia 2026 Cultural Prime_Events_Rule_Book'26.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white py-4 px-6 rounded-xl transition-all font-medium border border-white/5"
@@ -685,7 +685,7 @@ function CulturalsPage() {
                                 Check out the rule book and prepare for the most exciting cultural fest of the year.
                             </p>
                             <a
-                                href="/Rules-Regulations.pdf"
+                                href="/VITopia 2026 Cultural Prime_Events_Rule_Book'26.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 bg-[var(--primary)] text-black font-semibold px-8 py-4 rounded-full hover:bg-[var(--primary)]/90 transition-all hover:scale-105 active:scale-95"
