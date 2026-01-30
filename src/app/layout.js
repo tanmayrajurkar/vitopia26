@@ -1,6 +1,7 @@
 import { Anton, Outfit } from "next/font/google"; // Imported new fonts
 import Script from "next/script";
 import "./globals.css";
+import Snowfall from "@/components/ui/Snowfall";
 
 const anton = Anton({
   weight: "400",
@@ -36,6 +37,9 @@ export default function RootLayout({ children }) {
           `}
         </Script>
         {children}
+
+        {/* Snowfall Animation - seasonal enhancement */}
+        <Snowfall />
       </body>
     </html>
   );
