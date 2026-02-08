@@ -385,7 +385,7 @@ const sportsData = [
         id: 50,
         title: "Triple Jump (Women)",
         description: "Individual • Fee: ₹400",
-        image: "/sports/triple jump men.webp",
+        image: "/sports/Long jump women.webp",
         teamSize: "Individual",
         registrationStatus: "open",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
