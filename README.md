@@ -16,7 +16,7 @@ Official website for **Vitopia 2026**, the Annual Sports and Cultural Fest of **
 * 🎤 Pro-shows, competitions, and exhibitions
 * 🤝 Community engagement and student collaboration
 
-Vitopia 2026 aims to deliver an energetic, inclusive, and unforgettable experience for participants, performers, and visitors alike.
+**Vitopia 2026** aims to deliver an energetic, inclusive, and unforgettable experience for participants, performers, and visitors alike.
 
 This website serves as the central platform for:
 

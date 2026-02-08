@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { IconMenu2, IconX } from "@tabler/icons-react";
+import { IconMenu2, IconX, IconChevronDown } from "@tabler/icons-react";
 import { MdArrowOutward } from "react-icons/md";
 import ComingSoonModal from "@/components/ui/ComingSoonModal";
 
@@ -13,6 +13,14 @@ const navItems = [
   { title: "Sports", href: "/sports" },
   { title: "Culturals", href: "/culturals" },
   { title: "Merchandise", href: "/merchandise" },
+  {
+    title: "History",
+    dropdown: [
+      { title: "2023", href: "https://vitopia-2023.pages.dev/" },
+      { title: "2024", href: "https://vitopia-2024-next.vercel.app/" },
+      { title: "2025", href: "https://vitopia2025-vitap.vercel.app/" },
+    ]
+  },
   { title: "Contact", href: "/contact" },
 ];
 
@@ -50,6 +58,31 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8 bg-white/5 px-8 py-3 rounded-full border border-white/10 backdrop-blur-sm">
             {navItems.map((item) => {
+              if (item.dropdown) {
+                return (
+                  <div key={item.title} className="relative group">
+                    <button className="flex items-center gap-1 text-sm font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors py-2">
+                      {item.title}
+                      <IconChevronDown size={16} />
+                    </button>
+
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top">
+                      <div className="bg-black/90 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden py-2 min-w-[100px] shadow-xl flex flex-col items-center">
+                        {item.dropdown.map((subItem) => (
+                          <Link
+                            key={subItem.title}
+                            href={subItem.href}
+                            className="block px-4 py-2 text-sm text-gray-400 hover:text-primary hover:bg-white/5 transition-colors font-bold uppercase tracking-wider w-full text-center"
+                          >
+                            {subItem.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
               const isActive = pathname === item.href;
               return (
                 <Link
@@ -141,22 +174,50 @@ export default function Navbar() {
               <IconX size={40} />
             </button>
 
-            {navItems.map((item, idx) => (
-              <motion.div
-                key={item.href}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * idx }}
-              >
-                <Link
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`text-4xl font-anton uppercase tracking-widest ${pathname === item.href ? "text-primary" : "text-white"}`}
+            {navItems.map((item, idx) => {
+              if (item.dropdown) {
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 * idx }}
+                    className="flex flex-col items-center gap-4"
+                  >
+                    <span className="text-4xl font-anton uppercase tracking-widest text-white/50">{item.title}</span>
+                    <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                      {item.dropdown.map(subItem => (
+                        <Link
+                          key={subItem.title}
+                          href={subItem.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="text-2xl font-anton uppercase tracking-widest text-white hover:text-primary"
+                        >
+                          {subItem.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                );
+              }
+
+              return (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * idx }}
                 >
-                  {item.title}
-                </Link>
-              </motion.div>
-            ))}
+                  <Link
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`text-4xl font-anton uppercase tracking-widest ${pathname === item.href ? "text-primary" : "text-white"}`}
+                  >
+                    {item.title}
+                  </Link>
+                </motion.div>
+              );
+            })}
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
