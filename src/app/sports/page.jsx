@@ -26,9 +26,9 @@ const sportsData = [
     {
         id: 2,
         title: "Football (Men)",
-        description: "Team of 15 Players • Fee: ₹5000",
+        description: "Team of 17 Players • Fee: ₹5000",
         image: "/sports/football(men).webp",
-        teamSize: "15 Players",
+        teamSize: "17 Players",
         registrationStatus: "open",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
         date: "12th & 13th Feb 2026",
@@ -322,6 +322,18 @@ const sportsData = [
     {
         id: 24,
         title: "Triple Jump (Men)",
+        description: "Individual • Fee: ₹400",
+        image: "/sports/triple jump men.webp",
+        teamSize: "Individual",
+        registrationStatus: "open",
+        registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
+        date: "15th Feb 2026",
+        venue: "Athletics Track",
+        entryFee: "₹400"
+    },
+    {
+        id: 50,
+        title: "Triple Jump (Women)",
         description: "Individual • Fee: ₹400",
         image: "/sports/triple jump men.webp",
         teamSize: "Individual",
