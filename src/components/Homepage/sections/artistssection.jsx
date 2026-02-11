@@ -19,19 +19,19 @@ const days = [
                 name: "Mohana Bhogaraju",
                 role: "Playback Singer",
                 image: "/artists/mohana.jpg",
-                gradient: "from-lime-500/80 via-green-600/60 to-black/90",
+                gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
                 name: "Hesham Abdul Wahab",
                 role: "Music Director",
                 image: "/artists/hesham.jpg",
-                gradient: "from-emerald-500/80 via-teal-600/60 to-black/90",
+                gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
                 name: "DJ Notorious",
                 role: "DJ",
                 image: "/artists/notorious.jpg",
-                gradient: "from-green-500/80 via-lime-600/60 to-black/90",
+                gradient: "from-black/20 via-black/10 to-black/80",
             },
         ],
     },
@@ -50,19 +50,19 @@ const days = [
                 name: "Darshan Raval",
                 role: "Playback Singer",
                 image: "/artists/darshan.jpg",
-                gradient: "from-purple-500/80 via-pink-600/60 to-black/90",
+                gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
                 name: "Band Macca",
                 role: "Live Band",
                 image: "/artists/macca.jpg",
-                gradient: "from-fuchsia-500/80 via-purple-600/60 to-black/90",
+                gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
                 name: "DJ Teri Miko",
                 role: "DJ",
                 image: "/artists/terimiko.jpg",
-                gradient: "from-violet-500/80 via-indigo-600/60 to-black/90",
+                gradient: "from-black/20 via-black/10 to-black/80",
             },
         ],
     },
@@ -81,19 +81,19 @@ const days = [
                 name: "Pineapple Express",
                 role: "Live Band",
                 image: "/artists/pineapple.jpg",
-                gradient: "from-amber-500/80 via-orange-600/60 to-black/90",
+                gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
                 name: "Mohan Sisters Live",
                 role: "Live Performers",
-                image: "/artists/mohan-sisters.jpg",
-                gradient: "from-yellow-500/80 via-amber-600/60 to-black/90",
+                image: "/artists/mohan-sisters.JPG",
+                gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
                 name: "DJ Prithvi Sai",
                 role: "DJ",
-                image: "/artists/prithvi.jpg",
-                gradient: "from-orange-500/80 via-red-600/60 to-black/90",
+                image: "/artists/prithvi.JPG",
+                gradient: "from-black/20 via-black/10 to-black/80",
             },
         ],
     },
@@ -121,7 +121,7 @@ const gradientFallbacks = [
 ];
 
 function ArtistCard({ artist, index, day, fallbackGradient }) {
-    const [imgError, setImgError] = useState(true); // default to fallback until images are added
+    const [imgError, setImgError] = useState(false); // default to fallback until images are added
 
     return (
         <motion.div
@@ -155,7 +155,7 @@ function ArtistCard({ artist, index, day, fallbackGradient }) {
                             src={artist.image}
                             alt={artist.name}
                             fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                            className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
                             onError={() => setImgError(true)}
                             sizes="(max-width: 768px) 100vw, 33vw"
                         />
@@ -303,8 +303,8 @@ export default function ArtistsSection() {
                             key={day.id}
                             onClick={() => setActiveDay(idx)}
                             className={`relative group cursor-pointer px-5 py-3 md:px-8 md:py-4 font-anton text-sm md:text-lg uppercase tracking-wider transition-all duration-500 rounded-xl border-2 ${activeDay === idx
-                                    ? `${day.borderColor} bg-white/5`
-                                    : "border-white/10 bg-transparent hover:border-white/20 hover:bg-white/[0.02]"
+                                ? `${day.borderColor} bg-white/5`
+                                : "border-white/10 bg-transparent hover:border-white/20 hover:bg-white/[0.02]"
                                 }`}
                             style={
                                 activeDay === idx
