@@ -4,6 +4,7 @@ import Navbar from "@/components/Homepage/sections/navbar";
 import HeroSection from "@/components/Homepage/sections/herosection1";
 import AboutSection from "@/components/Homepage/sections/aboutsection";
 import TimerSection from "@/components/Homepage/sections/timersection";
+import ArtistsSection from "@/components/Homepage/sections/artistssection";
 import CardSection from "@/components/Homepage/sections/cardsection";
 import GallerySection from "@/components/Homepage/sections/gallerysection";
 import { Footer } from "@/components/Homepage/sections/footer";
@@ -35,6 +36,10 @@ export default function Page() {
       <div className="relative z-10">
         <HeroSection />
       </div>
+
+      <ScrollWrapper className="z-20">
+        <ArtistsSection />
+      </ScrollWrapper>
 
       <ScrollWrapper className="z-20">
         <TimerSection />
