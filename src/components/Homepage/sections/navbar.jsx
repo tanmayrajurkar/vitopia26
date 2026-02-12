@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconMenu2, IconX, IconChevronDown } from "@tabler/icons-react";
 import { MdArrowOutward } from "react-icons/md";
-import ComingSoonModal from "@/components/ui/ComingSoonModal";
+
 
 const navItems = [
   { title: "Home", href: "/" },
@@ -27,7 +27,7 @@ const navItems = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isComingSoonOpen, setComingSoonOpen] = useState(false);
+
   const pathname = usePathname();
 
   useEffect(() => {
@@ -118,8 +118,9 @@ export default function Navbar() {
               {/* Pulsing Glow Background */}
               <div className="absolute -inset-3 bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 opacity-20 blur-xl group-hover:opacity-40 animate-pulse transition-opacity duration-300" />
 
-              <button
-                onClick={() => setComingSoonOpen(true)}
+              <Link
+                href="https://events.vitap.ac.in/e/pro-cultural-registrations-f8d54d4d-d080-4535-83c4-c629fd2c7fbe"
+                target="_blank"
                 className="relative block overflow-hidden"
                 style={{
                   clipPath: 'polygon(12% 0%, 100% 0%, 88% 100%, 0% 100%)'
@@ -138,7 +139,7 @@ export default function Navbar() {
                   {/* Animated Scanline */}
                   <div className="absolute left-0 right-0 h-[2px] bg-white/60 top-1/2 -translate-y-1/2 group-hover:animate-ping opacity-0 group-hover:opacity-100" />
                 </div>
-              </button>
+              </Link>
 
               {/* Decorative Corner Elements */}
               <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-lime-400 group-hover:w-5 group-hover:h-5 transition-all duration-300" />
@@ -156,7 +157,7 @@ export default function Navbar() {
         </div>
       </motion.nav >
 
-      <ComingSoonModal isOpen={isComingSoonOpen} onClose={() => setComingSoonOpen(false)} />
+
 
       {/* Mobile Menu Overlay */}
       < AnimatePresence >
@@ -228,11 +229,10 @@ export default function Navbar() {
               {/* Pulsing Glow Background */}
               <div className="absolute -inset-4 bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 opacity-30 blur-2xl group-hover:opacity-50 animate-pulse transition-opacity duration-300" />
 
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  setComingSoonOpen(true);
-                }}
+              <Link
+                href="https://events.vitap.ac.in/e/pro-cultural-registrations-f8d54d4d-d080-4535-83c4-c629fd2c7fbe"
+                target="_blank"
+                onClick={() => setMobileMenuOpen(false)}
                 className="relative block overflow-hidden"
                 style={{
                   clipPath: 'polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%)'
@@ -251,7 +251,7 @@ export default function Navbar() {
                   {/* Animated Scanline */}
                   <div className="absolute left-0 right-0 h-[2px] bg-white/60 top-1/2 -translate-y-1/2 group-hover:animate-ping opacity-0 group-hover:opacity-100" />
                 </div>
-              </button>
+              </Link>
 
               {/* Decorative Corner Elements */}
               <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-lime-400 group-hover:w-8 group-hover:h-8 transition-all duration-300" />

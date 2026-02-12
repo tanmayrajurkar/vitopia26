@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import CountdownTimer from "@/components/Homepage/CountDownTimer";
 import Link from "next/link";
 import { MdArrowOutward } from "react-icons/md";
-import ComingSoonModal from "@/components/ui/ComingSoonModal";
+
 
 const TimerSection = () => {
-  const [isComingSoonOpen, setComingSoonOpen] = useState(false);
+
 
   return (
     <section className="bg-[#050505] py-16 md:py-32 relative overflow-hidden border-y border-lime-400/20">
@@ -58,8 +58,9 @@ const TimerSection = () => {
               {/* Pulsing Glow Background */}
               <div className="absolute -inset-4 bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 opacity-30 blur-2xl group-hover:opacity-50 animate-pulse transition-opacity duration-300" />
 
-              <button
-                onClick={() => setComingSoonOpen(true)}
+              <Link
+                href="https://events.vitap.ac.in/e/pro-cultural-registrations-f8d54d4d-d080-4535-83c4-c629fd2c7fbe"
+                target="_blank"
                 className="relative block overflow-hidden"
                 style={{
                   clipPath: 'polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%)'
@@ -78,7 +79,7 @@ const TimerSection = () => {
                   {/* Animated Scanline */}
                   <div className="absolute left-0 right-0 h-[2px] bg-white/60 top-1/2 -translate-y-1/2 group-hover:animate-ping" />
                 </div>
-              </button>
+              </Link>
 
               {/* Decorative Corner Elements */}
               <div className="absolute -top-2 -left-2 w-4 h-4 md:w-6 md:h-6 border-t-2 border-l-2 border-lime-400 group-hover:w-6 group-hover:h-6 md:group-hover:w-8 md:group-hover:h-8 transition-all duration-300 hidden sm:block" />
@@ -99,7 +100,7 @@ const TimerSection = () => {
 
         </div>
       </div>
-      <ComingSoonModal isOpen={isComingSoonOpen} onClose={() => setComingSoonOpen(false)} />
+
     </section>
   );
 };
