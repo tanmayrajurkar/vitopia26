@@ -560,14 +560,26 @@ function CulturalsPage() {
     useEffect(() => {
         if (videoIndex < 0) return;
         const video = videoRef.current;
-        if (video) {
-            video.load();
+        if (!video) return;
+        video.muted = false;
+        video.load();
+        video.play().catch(() => {
+            // Browser blocked unmuted autoplay — fall back to muted
+            video.muted = true;
             video.play().catch(() => { });
-        }
+        });
     }, [videoIndex]);
 
+    // Unmute on first user interaction (only needed if autoplay fell back to muted)
+    const handleUnmute = useCallback(() => {
+        const video = videoRef.current;
+        if (video && video.muted) {
+            video.muted = false;
+        }
+    }, []);
+
     return (
-        <div className="bg-[#050505] min-h-screen relative">
+        <div className="bg-[#050505] min-h-screen relative" onClick={handleUnmute}>
             {/* Fixed video background across entire page */}
             <div className="fixed inset-0 z-0">
                 {videoIndex >= 0 && (

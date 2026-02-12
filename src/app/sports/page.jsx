@@ -2,7 +2,7 @@
 
 import { Footer } from "@/components/Homepage/sections/footer";
 import Navbar from "@/components/Homepage/sections/navbar";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { IconTrophy, IconUsers, IconCalendar, IconMapPin, IconChevronRight, IconX, IconExternalLink } from "@tabler/icons-react";
 import Image from "next/image";
@@ -844,196 +844,204 @@ function SportModal({ sport, onClose }) {
 }
 
 
-// Main page component
+const SPORTS_VIDEO_PATH = "/sports/sports.mp4";
+
+
 function SportsPage() {
     const [selectedSport, setSelectedSport] = useState(null);
+    const videoRef = useRef(null);
 
+    // Try unmuted playback; fall back to muted if browser blocks it
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+        video.muted = false;
+        video.play().catch(() => {
+            video.muted = true;
+            video.play().catch(() => { });
+        });
+    }, []);
 
-
+    // Unmute on first user interaction (only needed if autoplay fell back to muted)
+    const handleUnmute = useCallback(() => {
+        const video = videoRef.current;
+        if (video && video.muted) {
+            video.muted = false;
+        }
+    }, []);
 
     return (
-        <div className="bg-[#050505] min-h-screen">
-            <Navbar />
+        <div className="bg-[#050505] min-h-screen relative" onClick={handleUnmute}>
+            {/* Fixed video background across entire page */}
+            <div className="fixed inset-0 z-0">
+                <video
+                    ref={videoRef}
+                    src={SPORTS_VIDEO_PATH}
+                    className="w-full h-full"
+                    style={{ objectFit: 'cover' }}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                />
+                {/* Dark overlay for readability */}
+                <div className="absolute inset-0 bg-black/50" />
+            </div>
 
-            {/* Hero Section */}
-            <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20">
-                {/* Animated background */}
-                <div className="absolute inset-0">
-                    {/* Grid pattern */}
-                    <div
-                        className="absolute inset-0 opacity-[0.03]"
-                        style={{
-                            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-                            backgroundSize: '60px 60px'
-                        }}
-                    />
+            <div className="relative z-10">
+                <Navbar />
 
-                    {/* Gradient orbs */}
-                    <motion.div
-                        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-[var(--primary)]/10 blur-[120px]"
-                        animate={{
-                            scale: [1, 1.2, 1],
-                            opacity: [0.3, 0.5, 0.3]
-                        }}
-                        transition={{ duration: 8, repeat: Infinity }}
-                    />
-                    <motion.div
-                        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[var(--secondary)]/10 blur-[100px]"
-                        animate={{
-                            scale: [1.2, 1, 1.2],
-                            opacity: [0.3, 0.5, 0.3]
-                        }}
-                        transition={{ duration: 10, repeat: Infinity }}
-                    />
-                </div>
+                {/* Hero Section */}
+                <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20">
 
-                {/* Content */}
-                <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        {/* Badge */}
+                    {/* Content */}
+                    <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
                         <motion.div
-                            className="inline-flex md:mt-5 items-center gap-2 bg-[var(--primary)]/10 border border-[var(--primary)]/20 rounded-full px-4 py-2 mb-8"
-                            animate={{ y: [0, -5, 0] }}
-                            transition={{ duration: 3, repeat: Infinity }}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
                         >
-                            <IconTrophy className="text-[var(--primary)]" size={18} />
-                            <span className="text-[var(--primary)] text-sm font-medium">VITOPIA 2026 Sports</span>
+                            {/* Badge */}
+                            <motion.div
+                                className="inline-flex md:mt-5 items-center gap-2 bg-[var(--primary)]/10 border border-[var(--primary)]/20 rounded-full px-4 py-2 mb-8"
+                                animate={{ y: [0, -5, 0] }}
+                                transition={{ duration: 3, repeat: Infinity }}
+                            >
+                                <IconTrophy className="text-[var(--primary)]" size={18} />
+                                <span className="text-[var(--primary)] text-sm font-medium">VITOPIA 2026 Sports</span>
+                            </motion.div>
+
+                            {/* Title */}
+                            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
+                                <span className="block">COMPETE.</span>
+                                <span className="block bg-gradient-to-r from-[var(--primary)] via-[var(--secondary)] to-[var(--accent)] bg-clip-text text-transparent">
+                                    CONQUER.
+                                </span>
+                                <span className="block">CELEBRATE.</span>
+                            </h1>
+
+                            {/* Subtitle */}
+                            <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+                                Join the ultimate sporting extravaganza featuring 8+ sports disciplines,
+                                thousands of athletes, and unforgettable moments.
+                            </p>
+
+                            {/* Stats */}
+                            <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+                                {[
+                                    { value: 30, suffix: "+", label: "Sports" },
+                                    { value: 500, suffix: "+", label: "Participants" },
+                                    { value: 3, suffix: "", label: "Days" }
+                                ].map((stat, i) => (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.5 + i * 0.1 }}
+                                        className="text-center"
+                                    >
+                                        <div className="text-4xl md:text-5xl font-bold text-white mb-1">
+                                            <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                                        </div>
+                                        <div className="text-white/40 text-sm uppercase tracking-wider">
+                                            {stat.label}
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </motion.div>
+                    </div>
+
+
+                </section>
+
+
+
+                {/* Sports Grid Section */}
+                <section className="py-20 px-4">
+                    <div className="max-w-6xl mx-auto">
+                        {/* Section header */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-center mb-16"
+                        >
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                                Featured Sports
+                            </h2>
+                            <p className="text-white/50 max-w-xl mx-auto">
+                                Explore our lineup of thrilling sports competitions
+                            </p>
                         </motion.div>
 
-                        {/* Title */}
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
-                            <span className="block">COMPETE.</span>
-                            <span className="block bg-gradient-to-r from-[var(--primary)] via-[var(--secondary)] to-[var(--accent)] bg-clip-text text-transparent">
-                                CONQUER.
-                            </span>
-                            <span className="block">CELEBRATE.</span>
-                        </h1>
-
-                        {/* Subtitle */}
-                        <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-                            Join the ultimate sporting extravaganza featuring 8+ sports disciplines,
-                            thousands of athletes, and unforgettable moments.
-                        </p>
-
-                        {/* Stats */}
-                        <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-                            {[
-                                { value: 30, suffix: "+", label: "Sports" },
-                                { value: 500, suffix: "+", label: "Participants" },
-                                { value: 3, suffix: "", label: "Days" }
-                            ].map((stat, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.5 + i * 0.1 }}
-                                    className="text-center"
-                                >
-                                    <div className="text-4xl md:text-5xl font-bold text-white mb-1">
-                                        <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                                    </div>
-                                    <div className="text-white/40 text-sm uppercase tracking-wider">
-                                        {stat.label}
-                                    </div>
-                                </motion.div>
+                        {/* Sports grid */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {sportsData.map((sport, index) => (
+                                <SportCard
+                                    key={sport.id}
+                                    sport={sport}
+                                    index={index}
+                                    onClick={setSelectedSport}
+                                />
                             ))}
                         </div>
-                    </motion.div>
-                </div>
-
-
-            </section>
-
-
-
-            {/* Sports Grid Section */}
-            <section className="py-20 px-4">
-                <div className="max-w-6xl mx-auto">
-                    {/* Section header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                            Featured Sports
-                        </h2>
-                        <p className="text-white/50 max-w-xl mx-auto">
-                            Explore our lineup of thrilling sports competitions
-                        </p>
-                    </motion.div>
-
-                    {/* Sports grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {sportsData.map((sport, index) => (
-                            <SportCard
-                                key={sport.id}
-                                sport={sport}
-                                index={index}
-                                onClick={setSelectedSport}
-                            />
-                        ))}
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* CTA Section */}
-            <section className="py-20 px-4">
-                <div className="max-w-4xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[var(--primary)]/20 via-[#0a0a0a] to-[var(--secondary)]/10 border border-white/5 p-12 text-center"
-                    >
-                        {/* Background decoration */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--primary)]/10 rounded-full blur-[80px]" />
-                        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--secondary)]/10 rounded-full blur-[60px]" />
+                {/* CTA Section */}
+                <section className="py-20 px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[var(--primary)]/20 via-[#0a0a0a] to-[var(--secondary)]/10 border border-white/5 p-12 text-center"
+                        >
+                            {/* Background decoration */}
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--primary)]/10 rounded-full blur-[80px]" />
+                            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--secondary)]/10 rounded-full blur-[60px]" />
 
-                        <div className="relative z-10">
-                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                                Ready for the Challenge?
-                            </h2>
-                            <p className="text-white/50 mb-8 max-w-xl mx-auto">
-                                Registrations are now <strong>OPEN</strong> for all sports. Secure your spot and represent your college!
-                            </p>
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <a
-                                    href="https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 bg-[var(--primary)] text-black font-semibold px-8 py-4 rounded-full hover:bg-[var(--primary)]/90 transition-all hover:scale-105 active:scale-95"
-                                >
-                                    Register Now
-                                </a>
-                                <a
-                                    href="/Rules-Regulations.pdf"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 bg-white/5 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-all"
-                                >
-                                    <IconExternalLink size={20} />
-                                    Rules & Regulations
-                                </a>
+                            <div className="relative z-10">
+                                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                                    Ready for the Challenge?
+                                </h2>
+                                <p className="text-white/50 mb-8 max-w-xl mx-auto">
+                                    Registrations are now <strong>OPEN</strong> for all sports. Secure your spot and represent your college!
+                                </p>
+                                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                    <a
+                                        href="https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 bg-[var(--primary)] text-black font-semibold px-8 py-4 rounded-full hover:bg-[var(--primary)]/90 transition-all hover:scale-105 active:scale-95"
+                                    >
+                                        Register Now
+                                    </a>
+                                    <a
+                                        href="/Rules-Regulations.pdf"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 bg-white/5 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-all"
+                                    >
+                                        <IconExternalLink size={20} />
+                                        Rules & Regulations
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
+                        </motion.div>
+                    </div>
+                </section>
 
-            <Footer />
+                <Footer />
 
-            {/* Modal */}
-            <AnimatePresence>
-                {selectedSport && (
-                    <SportModal sport={selectedSport} onClose={() => setSelectedSport(null)} />
-                )}
-            </AnimatePresence>
+                {/* Modal */}
+                <AnimatePresence>
+                    {selectedSport && (
+                        <SportModal sport={selectedSport} onClose={() => setSelectedSport(null)} />
+                    )}
+                </AnimatePresence>
+            </div>
         </div>
     );
 }
