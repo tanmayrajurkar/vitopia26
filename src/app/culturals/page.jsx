@@ -2,10 +2,22 @@
 
 import { Footer } from "@/components/Homepage/sections/footer";
 import Navbar from "@/components/Homepage/sections/navbar";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { IconSparkles, IconUsers, IconCalendar, IconMapPin, IconChevronRight, IconX, IconExternalLink } from "@tabler/icons-react";
 import Image from "next/image";
+
+const artistVideos = [
+    "/artist-videos/artist (1).mp4",
+    "/artist-videos/artist (2).mp4",
+    "/artist-videos/artist (3).mp4",
+    "/artist-videos/artist (4).mp4",
+    "/artist-videos/artist (5).mp4",
+    "/artist-videos/artist (6).mp4",
+    "/artist-videos/artist (7).mp4",
+    "/artist-videos/artist (8).mp4",
+    "/artist-videos/artist (9).mp4",
+];
 
 const culturalsData = [
     // --- Single Classic ---
@@ -533,180 +545,201 @@ function EventModal({ event, onClose }) {
 // Main page component
 function CulturalsPage() {
     const [selectedEvent, setSelectedEvent] = useState(null);
+    const [videoIndex, setVideoIndex] = useState(-1);
+    const videoRef = useRef(null);
+
+    // Pick a random starting video on mount (client-side only)
+    useEffect(() => {
+        setVideoIndex(Math.floor(Math.random() * artistVideos.length));
+    }, []);
+
+    const handleVideoEnd = useCallback(() => {
+        setVideoIndex((prev) => (prev + 1) % artistVideos.length);
+    }, []);
+
+    useEffect(() => {
+        if (videoIndex < 0) return;
+        const video = videoRef.current;
+        if (!video) return;
+        video.muted = false;
+        video.load();
+        video.play().catch(() => {
+            // Browser blocked unmuted autoplay — fall back to muted
+            video.muted = true;
+            video.play().catch(() => { });
+        });
+    }, [videoIndex]);
+
+    // Unmute on first user interaction (only needed if autoplay fell back to muted)
+    const handleUnmute = useCallback(() => {
+        const video = videoRef.current;
+        if (video && video.muted) {
+            video.muted = false;
+        }
+    }, []);
 
     return (
-        <div className="bg-[#050505] min-h-screen">
-            <Navbar />
-
-            {/* Hero Section */}
-            <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20">
-                {/* Animated background */}
-                <div className="absolute inset-0">
-                    {/* Grid pattern */}
-                    <div
-                        className="absolute inset-0 opacity-[0.03]"
-                        style={{
-                            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-                            backgroundSize: '60px 60px'
-                        }}
+        <div className="bg-[#050505] min-h-screen relative" onClick={handleUnmute}>
+            {/* Fixed video background across entire page */}
+            <div className="fixed inset-0 z-0">
+                {videoIndex >= 0 && (
+                    <video
+                        ref={videoRef}
+                        key={videoIndex}
+                        src={artistVideos[videoIndex]}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        autoPlay
+                        playsInline
+                        onEnded={handleVideoEnd}
                     />
+                )}
+                {/* Dark overlay for readability */}
+                <div className="absolute inset-0 bg-black/50" />
+            </div>
 
-                    {/* Gradient orbs */}
-                    <motion.div
-                        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-[var(--secondary)]/10 blur-[120px]"
-                        animate={{
-                            scale: [1, 1.2, 1],
-                            opacity: [0.3, 0.5, 0.3]
-                        }}
-                        transition={{ duration: 8, repeat: Infinity }}
-                    />
-                    <motion.div
-                        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[var(--accent)]/10 blur-[100px]"
-                        animate={{
-                            scale: [1.2, 1, 1.2],
-                            opacity: [0.3, 0.5, 0.3]
-                        }}
-                        transition={{ duration: 10, repeat: Infinity }}
-                    />
-                </div>
+            <div className="relative z-10">
+                <Navbar />
 
-                {/* Content */}
-                <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        {/* Badge */}
+                {/* Hero Section */}
+                <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20">
+
+                    {/* Content */}
+                    <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
                         <motion.div
-                            className="inline-flex md:mt-5 items-center gap-2 bg-[var(--secondary)]/10 border border-[var(--secondary)]/20 rounded-full px-4 py-2 mb-8"
-                            animate={{ y: [0, -5, 0] }}
-                            transition={{ duration: 3, repeat: Infinity }}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
                         >
-                            <IconSparkles className="text-[var(--secondary)]" size={18} />
-                            <span className="text-[var(--secondary)] text-sm font-medium">VITOPIA 2026 Culturals</span>
+                            {/* Badge */}
+                            <motion.div
+                                className="inline-flex md:mt-5 items-center gap-2 bg-[var(--secondary)]/10 border border-[var(--secondary)]/20 rounded-full px-4 py-2 mb-8"
+                                animate={{ y: [0, -5, 0] }}
+                                transition={{ duration: 3, repeat: Infinity }}
+                            >
+                                <IconSparkles className="text-[var(--secondary)]" size={18} />
+                                <span className="text-[var(--secondary)] text-sm font-medium">VITOPIA 2026 Culturals</span>
+                            </motion.div>
+
+                            {/* Title */}
+                            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
+                                <span className="block">EXPRESS.</span>
+                                <span className="block bg-gradient-to-r from-[var(--secondary)] via-[var(--accent)] to-[var(--primary)] bg-clip-text text-transparent">
+                                    CREATE.
+                                </span>
+                                <span className="block">INSPIRE.</span>
+                            </h1>
+
+                            {/* Subtitle */}
+                            <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+                                Unleash your artistic talents at the grandest cultural extravaganza
+                                featuring dance, music, drama, and more.
+                            </p>
+
+                            {/* Stats */}
+                            <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+                                {[
+                                    { value: 16, suffix: "+", label: "Events" },
+                                    { value: 1000, suffix: "+", label: "Participants" },
+                                    { value: 3, suffix: "+", label: "Days" }
+                                ].map((stat, i) => (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.5 + i * 0.1 }}
+                                        className="text-center"
+                                    >
+                                        <div className="text-4xl md:text-5xl font-bold text-white mb-1">
+                                            <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                                        </div>
+                                        <div className="text-white/40 text-sm uppercase tracking-wider">
+                                            {stat.label}
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </motion.div>
+                    </div>
+
+
+                </section>
+
+                {/* Events Grid Section */}
+                <section className="py-20 px-4">
+                    <div className="max-w-6xl mx-auto">
+                        {/* Section header */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-center mb-16"
+                        >
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                                Featured Events
+                            </h2>
+                            <p className="text-white/50 max-w-xl mx-auto">
+                                Explore our lineup of spectacular cultural competitions
+                            </p>
                         </motion.div>
 
-                        {/* Title */}
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
-                            <span className="block">EXPRESS.</span>
-                            <span className="block bg-gradient-to-r from-[var(--secondary)] via-[var(--accent)] to-[var(--primary)] bg-clip-text text-transparent">
-                                CREATE.
-                            </span>
-                            <span className="block">INSPIRE.</span>
-                        </h1>
-
-                        {/* Subtitle */}
-                        <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-                            Unleash your artistic talents at the grandest cultural extravaganza
-                            featuring dance, music, drama, and more.
-                        </p>
-
-                        {/* Stats */}
-                        <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-                            {[
-                                { value: 16, suffix: "+", label: "Events" },
-                                { value: 1000, suffix: "+", label: "Participants" },
-                                { value: 3, suffix: "+", label: "Days" }
-                            ].map((stat, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.5 + i * 0.1 }}
-                                    className="text-center"
-                                >
-                                    <div className="text-4xl md:text-5xl font-bold text-white mb-1">
-                                        <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                                    </div>
-                                    <div className="text-white/40 text-sm uppercase tracking-wider">
-                                        {stat.label}
-                                    </div>
-                                </motion.div>
+                        {/* Events grid */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {culturalsData.map((event, index) => (
+                                <EventCard
+                                    key={event.id}
+                                    event={event}
+                                    index={index}
+                                    onClick={setSelectedEvent}
+                                />
                             ))}
                         </div>
-                    </motion.div>
-                </div>
-
-
-            </section>
-
-
-            {/* Events Grid Section */}
-            <section className="py-20 px-4">
-                <div className="max-w-6xl mx-auto">
-                    {/* Section header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                            Featured Events
-                        </h2>
-                        <p className="text-white/50 max-w-xl mx-auto">
-                            Explore our lineup of spectacular cultural competitions
-                        </p>
-                    </motion.div>
-
-                    {/* Events grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {culturalsData.map((event, index) => (
-                            <EventCard
-                                key={event.id}
-                                event={event}
-                                index={index}
-                                onClick={setSelectedEvent}
-                            />
-                        ))}
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* CTA Section */}
-            <section className="py-20 px-4">
-                <div className="max-w-4xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[var(--secondary)]/20 via-[#0a0a0a] to-[var(--accent)]/10 border border-white/5 p-12 text-center"
-                    >
-                        {/* Background decoration */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--secondary)]/10 rounded-full blur-[80px]" />
-                        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--accent)]/10 rounded-full blur-[60px]" />
+                {/* CTA Section */}
+                <section className="py-20 px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[var(--secondary)]/20 via-[#0a0a0a] to-[var(--accent)]/10 border border-white/5 p-12 text-center"
+                        >
+                            {/* Background decoration */}
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--secondary)]/10 rounded-full blur-[80px]" />
+                            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--accent)]/10 rounded-full blur-[60px]" />
 
-                        <div className="relative z-10">
-                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                                Ready to Shine?
-                            </h2>
-                            <p className="text-white/50 mb-8 max-w-xl mx-auto">
-                                Check out the rule book and prepare for the most exciting cultural fest of the year.
-                            </p>
-                            <a
-                                href="/VITopia 2026 Cultural Prime_Events_Rule_Book'26.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-[var(--primary)] text-black font-semibold px-8 py-4 rounded-full hover:bg-[var(--primary)]/90 transition-all hover:scale-105 active:scale-95"
-                            >
-                                <IconExternalLink size={20} />
-                                View Rule Book
-                            </a>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
+                            <div className="relative z-10">
+                                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                                    Ready to Shine?
+                                </h2>
+                                <p className="text-white/50 mb-8 max-w-xl mx-auto">
+                                    Check out the rule book and prepare for the most exciting cultural fest of the year.
+                                </p>
+                                <a
+                                    href="/VITopia 2026 Cultural Prime_Events_Rule_Book'26.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 bg-[var(--primary)] text-black font-semibold px-8 py-4 rounded-full hover:bg-[var(--primary)]/90 transition-all hover:scale-105 active:scale-95"
+                                >
+                                    <IconExternalLink size={20} />
+                                    View Rule Book
+                                </a>
+                            </div>
+                        </motion.div>
+                    </div>
+                </section>
 
-            <Footer />
+                <Footer />
 
-            {/* Modal */}
-            <AnimatePresence>
-                {selectedEvent && (
-                    <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
-                )}
-            </AnimatePresence>
-        </div >
+                {/* Modal */}
+                <AnimatePresence>
+                    {selectedEvent && (
+                        <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
+                    )}
+                </AnimatePresence>
+            </div>
+        </div>
     );
 }
 
