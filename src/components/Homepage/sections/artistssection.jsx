@@ -18,19 +18,19 @@ const days = [
             {
                 name: "Mohana Bhogaraju",
                 role: "Playback Singer",
-                image: "/artists/mohana.webp",
+                image: "/artists/mohana.jpg",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
                 name: "Hesham Abdul Wahab",
                 role: "Music Director",
-                image: "/artists/hesham.webp",
+                image: "/artists/notorious.webp",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
                 name: "DJ Notorious",
                 role: "DJ",
-                image: "/artists/notorious.webp",
+                image: "/artists/hesham.webp",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
         ],
@@ -93,6 +93,12 @@ const days = [
                 name: "DJ Prithvi Sai",
                 role: "DJ",
                 image: "/artists/prithvi.webp",
+                gradient: "from-black/20 via-black/10 to-black/80",
+            },
+            {
+                name: "Band Circles",
+                role: "Live Band",
+                image: "/artists/mohana.webp",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
         ],
@@ -284,7 +290,7 @@ export default function ArtistsSection() {
                     </h2>
 
                     <p className="text-white/50 font-outfit text-sm md:text-lg max-w-lg mx-auto">
-                        3 Nights. 9 Acts. One Unforgettable Experience.
+                        3 Nights. 10 Acts. One Unforgettable Experience.
                     </p>
 
                     <div className="w-32 h-1 bg-gradient-to-r from-transparent via-lime-400 to-transparent mx-auto mt-6" />
