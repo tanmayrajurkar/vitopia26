@@ -16,21 +16,22 @@ const days = [
         bgAccent: "bg-lime-400",
         artists: [
             {
-                name: "Mohana Bhogaraju",
-                role: "Playback Singer",
-                image: "/artists/mohana.jpg",
+                name: "Hesham Abdul Wahab",
+                role: "Music Director",
+                image: "/artists/hesham.jpeg",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
-                name: "Hesham Abdul Wahab",
-                role: "Music Director",
-                image: "/artists/notorious.webp",
+                name: "Mohana Bhogaraju",
+                role: "Playback Singer",
+                image: "/artists/mohana.png",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
+
             {
                 name: "DJ Notorious",
                 role: "DJ",
-                image: "/artists/hesham.webp",
+                image: "/artists/notorious.png",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
         ],
@@ -49,19 +50,19 @@ const days = [
             {
                 name: "Darshan Raval",
                 role: "Playback Singer",
-                image: "/artists/darshan.webp",
+                image: "/artists/darshan.png",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
                 name: "Band Macca",
                 role: "Live Band",
-                image: "/artists/macca.webp",
+                image: "/artists/macca.png",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
                 name: "DJ Teri Miko",
                 role: "DJ",
-                image: "/artists/terimiko.webp",
+                image: "/artists/terimiko.png",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
         ],
@@ -78,27 +79,28 @@ const days = [
         bgAccent: "bg-amber-400",
         artists: [
             {
-                name: "Pineapple Express",
-                role: "Live Band",
-                image: "/artists/pineapple.webp",
+                name: "Mohan Sisters Live",
+                role: "Live Performers",
+                image: "/artists/mohan-sisters.png",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
-                name: "Mohan Sisters Live",
-                role: "Live Performers",
-                image: "/artists/mohan-sisters.webp",
+                name: "Pineapple Express",
+                role: "Live Band",
+                image: "/artists/pineapple.png",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
+
             {
                 name: "DJ Prithvi Sai",
                 role: "DJ",
-                image: "/artists/prithvi.webp",
+                image: "/artists/prithvi.png",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
                 name: "Band Circles",
                 role: "Live Band",
-                image: "/artists/mohana.webp",
+                image: "/artists/circles.png",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
         ],
@@ -203,27 +205,9 @@ function ArtistCard({ artist, index, day, fallbackGradient }) {
                     }}
                 />
 
-                {/* Role badge */}
-                <div className="absolute top-4 right-4 z-10">
-                    <div
-                        className={`px-3 py-1.5 rounded-full ${day.bgAccent} text-black font-outfit font-semibold text-[10px] md:text-xs uppercase tracking-widest`}
-                    >
-                        {artist.role}
-                    </div>
-                </div>
 
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-6">
-                    <h3 className="text-xl md:text-2xl lg:text-3xl font-anton uppercase text-white tracking-tight leading-tight group-hover:translate-x-1 transition-transform duration-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-                        {artist.name}
-                    </h3>
-                    <div className="mt-2 flex items-center gap-2">
-                        <div className={`w-8 h-[2px] ${day.bgAccent} rounded-full`} />
-                        <span className={`font-outfit text-xs ${day.textColor} uppercase tracking-widest`}>
-                            ProShow {day.label}
-                        </span>
-                    </div>
-                </div>
+
+
 
                 {/* Shine effect on hover */}
                 <div className="absolute inset-0 z-[3] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
@@ -347,7 +331,7 @@ export default function ArtistsSection() {
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeDay}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto"
+                        className={`grid grid-cols-1 ${currentDay.artists.length === 4 ? "md:grid-cols-4 max-w-7xl" : "md:grid-cols-3 max-w-5xl"} gap-5 md:gap-6 mx-auto`}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
