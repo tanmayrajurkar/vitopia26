@@ -4,7 +4,7 @@ import { Footer } from "@/components/Homepage/sections/footer";
 import Navbar from "@/components/Homepage/sections/navbar";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { IconTrophy, IconUsers, IconCalendar, IconMapPin, IconChevronRight, IconX, IconExternalLink } from "@tabler/icons-react";
+import { IconTrophy, IconUsers, IconCalendar, IconMapPin, IconChevronRight, IconX, IconExternalLink, IconFileText } from "@tabler/icons-react";
 import Image from "next/image";
 
 // Sports data with enhanced details
@@ -1041,6 +1041,16 @@ function SportsPage() {
                         <SportModal sport={selectedSport} onClose={() => setSelectedSport(null)} />
                     )}
                 </AnimatePresence>
+                {/* Rules Button */}
+                <a
+                    href="/Rules-Regulations.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="fixed bottom-6 right-6 z-[999] flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-sm transition-all duration-300 ease-out backdrop-blur-md border bg-white/5 border-white/10 text-white/60 hover:text-white hover:bg-white/10 hover:border-white/20 active:scale-95"
+                >
+                    <IconFileText size={20} />
+                    <span className="hidden sm:inline">Rules</span>
+                </a>
             </div>
         </div>
     );
