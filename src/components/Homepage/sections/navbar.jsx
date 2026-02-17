@@ -11,7 +11,13 @@ import { MdArrowOutward } from "react-icons/md";
 const navItems = [
   { title: "Home", href: "/" },
   { title: "Sports", href: "/sports" },
-  { title: "Culturals", href: "/culturals" },
+  {
+    title: "Culturals",
+    dropdown: [
+      { title: "Prime", href: "/culturals" },
+      { title: "Non-Prime", href: "https://events.vitap.ac.in/e/non-prime-events-registration-ee0eeb59-bbbe-477c-9d7a-b4b94dcb8dc5" },
+    ]
+  },
   { title: "Merchandise", href: "/merchandise" },
   {
     title: "History",
