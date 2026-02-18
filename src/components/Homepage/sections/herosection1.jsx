@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
+
 export default function HeroSection() {
     return (
         <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black py-12 md:py-20">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
+            {/* Mobile Background Image */}
+            <div className="absolute inset-0 z-0 md:hidden">
                 <Image
                     src="/hero-image.png"
                     alt="Hero Background"
@@ -17,6 +18,18 @@ export default function HeroSection() {
                     priority
                 />
                 <div className="absolute inset-0 bg-black/70" />
+            </div>
+
+            {/* Desktop Background Video */}
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none hidden md:block">
+                <iframe
+                    className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 opacity-70"
+                    src="https://www.youtube.com/embed/HYbVF3T6aBM?autoplay=1&mute=1&controls=0&loop=1&playlist=HYbVF3T6aBM&showinfo=0&rel=0&iv_load_policy=3&disablekb=1"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    title="Hero Background Video"
+                />
+                <div className="absolute inset-0 bg-black/60" />
             </div>
 
             {/* Background Elements */}
