@@ -5,14 +5,20 @@ import Link from "next/link";
 import Image from "next/image";
 
 const YOUTUBE_VIDEO_ID = "HYbVF3T6aBM";
+const YT_PLAYING = 1;
+const YT_ENDED = 0;
 
 export default function HeroSection() {
     const videoContainerRef = useRef(null);
     const playerRef = useRef(null);
     const [videoReady, setVideoReady] = useState(false);
+    const [videoStarted, setVideoStarted] = useState(false);
+    const [slide, setSlide] = useState(0); // 0 = video, 1 = image + text
 
     useEffect(() => {
-        if (typeof window === "undefined" || !videoContainerRef.current) return;
+        if (typeof window === "undefined") return;
+        const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+        if (!isDesktop) return;
 
         const loadYouTubeAPI = () => {
             if (window.YT?.Player) {
@@ -27,48 +33,102 @@ export default function HeroSection() {
         };
 
         function initPlayer() {
-            if (!videoContainerRef.current || playerRef.current) return;
-            playerRef.current = new window.YT.Player("hero-youtube-player", {
-                videoId: YOUTUBE_VIDEO_ID,
-                playerVars: {
-                    autoplay: 1,
-                    mute: 1, // Start muted so autoplay works, then we unmute
-                    controls: 0,
-                    loop: 1,
-                    playlist: YOUTUBE_VIDEO_ID,
-                    showinfo: 0,
-                    rel: 0,
-                    iv_load_policy: 3,
-                    disablekb: 1,
-                    playsinline: 1,
-                    modestbranding: 1,
-                },
-                events: {
-                    onReady: (e) => {
-                        setVideoReady(true);
-                        e.target.unMute();
-                        e.target.playVideo();
+            const el = document.getElementById("hero-youtube-player");
+            if (!el || playerRef.current) return;
+            try {
+                playerRef.current = new window.YT.Player("hero-youtube-player", {
+                    videoId: YOUTUBE_VIDEO_ID,
+                    playerVars: {
+                        autoplay: 1,
+                        mute: 1,
+                        controls: 0,
+                        loop: 0,
+                        showinfo: 0,
+                        rel: 0,
+                        iv_load_policy: 3,
+                        disablekb: 1,
+                        playsinline: 1,
+                        modestbranding: 1,
                     },
-                },
-            });
+                    events: {
+                        onReady: (e) => {
+                            setVideoReady(true);
+                            e.target.unMute();
+                            e.target.playVideo();
+                        },
+                        onStateChange: (e) => {
+                            if (e.data === YT_PLAYING) setVideoStarted(true);
+                            if (e.data === YT_ENDED) setSlide(1);
+                        },
+                    },
+                });
+            } catch (err) {
+                console.error("YouTube player init failed:", err);
+                playerRef.current = null;
+            }
         }
 
-        loadYouTubeAPI();
+        const id = requestAnimationFrame(() => {
+            loadYouTubeAPI();
+        });
+
         return () => {
+            cancelAnimationFrame(id);
             window.onYouTubeIframeAPIReady = null;
-            if (playerRef.current?.destroy) playerRef.current.destroy();
+            if (playerRef.current?.destroy) {
+                try {
+                    playerRef.current.destroy();
+                } catch (_) {}
+                playerRef.current = null;
+            }
         };
     }, []);
 
-    // Ensure unmuted when video becomes ready (in case unMute in onReady was blocked)
     useEffect(() => {
         if (!videoReady || !playerRef.current?.unMute) return;
         playerRef.current.unMute();
     }, [videoReady]);
 
+    // On mobile (no video): auto-advance to slide 1 after delay
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+        if (isDesktop) return;
+        const t = setTimeout(() => setSlide(1), 4000);
+        return () => clearTimeout(t);
+    }, []);
+
+    // When user switches back to slide 0, restart video and start audio
+    useEffect(() => {
+        if (slide !== 0 || !playerRef.current?.seekTo) return;
+        try {
+            playerRef.current.unMute();
+            playerRef.current.seekTo(0, true);
+            playerRef.current.playVideo();
+        } catch (_) {}
+    }, [slide]);
+
+    // When on image slide (slide 1), stop video and mute
+    useEffect(() => {
+        if (slide !== 1 || !playerRef.current) return;
+        try {
+            playerRef.current.mute();
+            playerRef.current.pauseVideo();
+        } catch (_) {}
+    }, [slide]);
+
+    // After 5 sec on image frame, auto-return to video frame
+    useEffect(() => {
+        if (slide !== 1) return;
+        const t = setTimeout(() => setSlide(0), 5000);
+        return () => clearTimeout(t);
+    }, [slide]);
+
+    const showText = slide === 1 || !videoStarted;
+
     return (
         <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black py-12 md:py-20">
-            {/* Mobile Background Image */}
+            {/* Slide 0: Mobile – image + text until "advance" */}
             <div className="absolute inset-0 z-0 md:hidden">
                 <Image
                     src="/hero-image.png"
@@ -80,32 +140,56 @@ export default function HeroSection() {
                 <div className="absolute inset-0 bg-black/70" />
             </div>
 
-            {/* Desktop Background Video - YouTube IFrame API for load + unmute control */}
-            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none hidden md:block">
-                <div
-                    ref={videoContainerRef}
-                    className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 opacity-70"
-                >
+            {/* Desktop: sliding “scroll” between video and image frames */}
+            <motion.div
+                className="absolute inset-0 z-0 overflow-hidden hidden md:flex"
+                animate={{ x: slide === 0 ? "0%" : "-50%" }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                style={{ width: "200%" }}
+            >
+                {/* Frame 0: video */}
+                <div className="relative flex-shrink-0 w-1/2 h-full overflow-hidden pointer-events-none">
                     <div
-                        id="hero-youtube-player"
-                        className="absolute inset-0 w-full h-full [&_iframe]:!absolute [&_iframe]:!inset-0 [&_iframe]:!w-full [&_iframe]:!h-full [&_iframe]:!object-cover"
-                    />
+                        ref={videoContainerRef}
+                        className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 opacity-70"
+                        style={{ visibility: slide === 0 ? "visible" : "hidden" }}
+                    >
+                        <div
+                            id="hero-youtube-player"
+                            className="absolute inset-0 w-full h-full [&_iframe]:!absolute [&_iframe]:!inset-0 [&_iframe]:!w-full [&_iframe]:!h-full [&_iframe]:!object-cover"
+                        />
+                    </div>
+                    <div className="absolute inset-0 bg-black/60" />
                 </div>
-                <div className="absolute inset-0 bg-black/60" />
-            </div>
+                {/* Frame 1: image */}
+                <div className="relative flex-shrink-0 w-1/2 h-full overflow-hidden">
+                    <Image
+                        src="/hero-image.png"
+                        alt="Hero Background"
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-black/60" />
+                </div>
+            </motion.div>
 
             {/* Background Elements */}
             <div className="absolute inset-0 bg-grid-pattern opacity-[0.04] z-0" />
 
-            {/* Gradient Blobs */}
-            <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px]" />
-            <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px]" />
+            {/* Gradient Blobs - only on slide 0 / when no image bg */}
+            {slide === 0 && (
+                <>
+                    <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px]" />
+                    <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px]" />
+                </>
+            )}
 
             <div className="container mx-auto px-6 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    animate={{ opacity: showText ? 1 : 0, y: showText ? 0 : 10 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     className="max-w-5xl mx-auto text-center"
                 >
                     {/* Badge */}
@@ -181,6 +265,22 @@ export default function HeroSection() {
                         </button>
                     </motion.div>
                 </motion.div>
+            </div>
+
+            {/* Slide dots – center below */}
+            <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 flex items-center justify-center gap-2">
+                <button
+                    type="button"
+                    aria-label="Slide 1"
+                    onClick={() => setSlide(0)}
+                    className={`w-2 h-2 rounded-full transition-colors ${slide === 0 ? "bg-white" : "bg-gray-500 hover:bg-gray-400"}`}
+                />
+                <button
+                    type="button"
+                    aria-label="Slide 2"
+                    onClick={() => setSlide(1)}
+                    className={`w-2 h-2 rounded-full transition-colors ${slide === 1 ? "bg-white" : "bg-gray-500 hover:bg-gray-400"}`}
+                />
             </div>
 
             {/* Decorative Ticker */}
