@@ -1,11 +1,71 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
+const YOUTUBE_VIDEO_ID = "HYbVF3T6aBM";
 
 export default function HeroSection() {
+    const videoContainerRef = useRef(null);
+    const playerRef = useRef(null);
+    const [videoReady, setVideoReady] = useState(false);
+
+    useEffect(() => {
+        if (typeof window === "undefined" || !videoContainerRef.current) return;
+
+        const loadYouTubeAPI = () => {
+            if (window.YT?.Player) {
+                initPlayer();
+                return;
+            }
+            const tag = document.createElement("script");
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScript = document.getElementsByTagName("script")[0];
+            firstScript?.parentNode?.insertBefore(tag, firstScript);
+            window.onYouTubeIframeAPIReady = initPlayer;
+        };
+
+        function initPlayer() {
+            if (!videoContainerRef.current || playerRef.current) return;
+            playerRef.current = new window.YT.Player("hero-youtube-player", {
+                videoId: YOUTUBE_VIDEO_ID,
+                playerVars: {
+                    autoplay: 1,
+                    mute: 1, // Start muted so autoplay works, then we unmute
+                    controls: 0,
+                    loop: 1,
+                    playlist: YOUTUBE_VIDEO_ID,
+                    showinfo: 0,
+                    rel: 0,
+                    iv_load_policy: 3,
+                    disablekb: 1,
+                    playsinline: 1,
+                    modestbranding: 1,
+                },
+                events: {
+                    onReady: (e) => {
+                        setVideoReady(true);
+                        e.target.unMute();
+                        e.target.playVideo();
+                    },
+                },
+            });
+        }
+
+        loadYouTubeAPI();
+        return () => {
+            window.onYouTubeIframeAPIReady = null;
+            if (playerRef.current?.destroy) playerRef.current.destroy();
+        };
+    }, []);
+
+    // Ensure unmuted when video becomes ready (in case unMute in onReady was blocked)
+    useEffect(() => {
+        if (!videoReady || !playerRef.current?.unMute) return;
+        playerRef.current.unMute();
+    }, [videoReady]);
+
     return (
         <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black py-12 md:py-20">
             {/* Mobile Background Image */}
@@ -20,15 +80,17 @@ export default function HeroSection() {
                 <div className="absolute inset-0 bg-black/70" />
             </div>
 
-            {/* Desktop Background Video */}
+            {/* Desktop Background Video - YouTube IFrame API for load + unmute control */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none hidden md:block">
-                <iframe
+                <div
+                    ref={videoContainerRef}
                     className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 opacity-70"
-                    src="https://www.youtube.com/embed/HYbVF3T6aBM?autoplay=1&mute=1&controls=0&loop=1&playlist=HYbVF3T6aBM&showinfo=0&rel=0&iv_load_policy=3&disablekb=1"
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
-                    title="Hero Background Video"
-                />
+                >
+                    <div
+                        id="hero-youtube-player"
+                        className="absolute inset-0 w-full h-full [&_iframe]:!absolute [&_iframe]:!inset-0 [&_iframe]:!w-full [&_iframe]:!h-full [&_iframe]:!object-cover"
+                    />
+                </div>
                 <div className="absolute inset-0 bg-black/60" />
             </div>
 

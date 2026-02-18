@@ -1,3 +1,8 @@
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
@@ -5,6 +10,10 @@ const nextConfig = {
     JWT_SECRET: process.env.JWT_SECRET,
   },
   allowedDevOrigins: ["tunnel-3000.tanvish.co.in"],
+  // Next.js 16 uses Turbopack by default; set root so it uses this project, not parent or home dir
+  turbopack: {
+    root: __dirname,
+  },
   images: {
     remotePatterns: [
       {
@@ -24,6 +33,15 @@ const nextConfig = {
         hostname: "plus.unsplash.com",
       },
     ],
+  },
+  webpack: (config) => {
+    // Resolve modules from project root only (avoids using /Users/tanmay/package.json and parent dirs)
+    config.resolve.modules = [
+      path.join(__dirname, "node_modules"),
+      "node_modules",
+      ...(config.resolve.modules || []),
+    ];
+    return config;
   },
 };
 
