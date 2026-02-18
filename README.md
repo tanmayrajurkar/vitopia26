@@ -34,4 +34,4 @@ This website serves as the central platform for:
 
 ## 📬 Contact
 
-For official updates and announcements, please visit the website or follow VIT-AP University’s official channels.
+For official updates and announcements, please visit the website or follow VIT-AP University’s official channels. 
