@@ -2,6 +2,7 @@ import { Anton, Outfit } from "next/font/google"; // Imported new fonts
 import Script from "next/script";
 import "./globals.css";
 import Snowfall from "@/components/ui/Snowfall";
+import HeroVideoPreload from "@/components/HeroVideoPreload";
 
 const anton = Anton({
   weight: "400",
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${anton.variable} ${outfit.variable} antialiased bg-background text-foreground`}>
+        <HeroVideoPreload />
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-0C7N1P621P"

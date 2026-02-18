@@ -3,91 +3,179 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import Hls from "hls.js";
 
-const YOUTUBE_VIDEO_ID = "HYbVF3T6aBM";
-const YT_PLAYING = 1;
-const YT_ENDED = 0;
+// Instant load (100–150ms): single MP4 URL (use faststart: ffmpeg -i in -c copy -movflags +faststart out.mp4)
+const getHeroMp4Url = () => process.env.NEXT_PUBLIC_HERO_VIDEO_MP4_URL?.trim() || "";
+
+// HLS: hybrid (first 10 segments from repo) or full Supabase URL
+const getHlsManifestUrl = () => {
+    const override = typeof process !== "undefined" && process.env.NEXT_PUBLIC_HLS_VIDEO_URL;
+    if (override) return override.trim();
+    const hybrid = typeof process !== "undefined" && process.env.NEXT_PUBLIC_USE_HYBRID_HLS;
+    if (hybrid) return "/hls/index.m3u8"; // same-origin; resolve to full URL in effect
+    const base = typeof process !== "undefined" && process.env.NEXT_PUBLIC_SUPABASE_URL;
+    if (base) return `${String(base).replace(/\/$/, "")}/storage/v1/object/public/video/index.m3u8`;
+    return "";
+};
+
+const HERO_MP4_URL = getHeroMp4Url();
+const HLS_MANIFEST_URL = getHlsManifestUrl();
+const USE_MP4 = !!HERO_MP4_URL;
+
+const TEXT_FADE_DELAY_MS = 1500; // 1.5s after video starts, then hero text fades
 
 export default function HeroSection() {
-    const videoContainerRef = useRef(null);
-    const playerRef = useRef(null);
+    const videoRef = useRef(null);
+    const hlsRef = useRef(null);
+    const textFadeTimeoutRef = useRef(null);
+    const [videoElMounted, setVideoElMounted] = useState(false);
     const [videoReady, setVideoReady] = useState(false);
     const [videoStarted, setVideoStarted] = useState(false);
-    const [slide, setSlide] = useState(0); // 0 = video, 1 = image + text
+    const [textFaded, setTextFaded] = useState(false); // true = hide hero text (after delay from video start)
+    const [slide, setSlide] = useState(0); // 0 = video (first), 1 = image
+    const [soundUnlocked, setSoundUnlocked] = useState(false); // true after first real user click (required by browsers for unmuted play)
+
+    const setVideoRef = (el) => {
+        videoRef.current = el;
+        setVideoElMounted(!!el);
+    };
 
     useEffect(() => {
-        if (typeof window === "undefined") return;
+        if (typeof window === "undefined" || !videoElMounted) return;
         const isDesktop = window.matchMedia("(min-width: 768px)").matches;
         if (!isDesktop) return;
 
-        const loadYouTubeAPI = () => {
-            if (window.YT?.Player) {
-                initPlayer();
-                return;
-            }
-            const tag = document.createElement("script");
-            tag.src = "https://www.youtube.com/iframe_api";
-            const firstScript = document.getElementsByTagName("script")[0];
-            firstScript?.parentNode?.insertBefore(tag, firstScript);
-            window.onYouTubeIframeAPIReady = initPlayer;
-        };
+        const video = videoRef.current;
+        if (!video) return;
 
-        function initPlayer() {
-            const el = document.getElementById("hero-youtube-player");
-            if (!el || playerRef.current) return;
-            try {
-                playerRef.current = new window.YT.Player("hero-youtube-player", {
-                    videoId: YOUTUBE_VIDEO_ID,
-                    playerVars: {
-                        autoplay: 1,
-                        mute: 1,
-                        controls: 0,
-                        loop: 0,
-                        showinfo: 0,
-                        rel: 0,
-                        iv_load_policy: 3,
-                        disablekb: 1,
-                        playsinline: 1,
-                        modestbranding: 1,
-                    },
-                    events: {
-                        onReady: (e) => {
-                            setVideoReady(true);
-                            e.target.unMute();
-                            e.target.playVideo();
-                        },
-                        onStateChange: (e) => {
-                            if (e.data === YT_PLAYING) setVideoStarted(true);
-                            if (e.data === YT_ENDED) setSlide(1);
-                        },
-                    },
-                });
-            } catch (err) {
-                console.error("YouTube player init failed:", err);
-                playerRef.current = null;
-            }
+        const onPlay = () => {
+            setVideoStarted(true);
+            if (textFadeTimeoutRef.current) clearTimeout(textFadeTimeoutRef.current);
+            textFadeTimeoutRef.current = setTimeout(() => setTextFaded(true), TEXT_FADE_DELAY_MS);
+        };
+        const onEnded = () => setSlide(1);
+
+        video.addEventListener("play", onPlay);
+        video.addEventListener("ended", onEnded);
+
+        if (USE_MP4 && HERO_MP4_URL) {
+            const onCanPlay = () => setVideoReady(true);
+            video.addEventListener("canplay", onCanPlay, { once: true });
+            video.addEventListener("loadeddata", onCanPlay, { once: true });
+            return () => {
+                video.removeEventListener("play", onPlay);
+                video.removeEventListener("ended", onEnded);
+                if (textFadeTimeoutRef.current) clearTimeout(textFadeTimeoutRef.current);
+            };
         }
 
-        const id = requestAnimationFrame(() => {
-            loadYouTubeAPI();
-        });
+        if (!HLS_MANIFEST_URL) {
+            if (typeof window !== "undefined") console.warn("[Hero] No video URL. Set NEXT_PUBLIC_HERO_VIDEO_MP4_URL or NEXT_PUBLIC_SUPABASE_URL.");
+            return () => {
+                video.removeEventListener("play", onPlay);
+                video.removeEventListener("ended", onEnded);
+            };
+        }
 
-        return () => {
-            cancelAnimationFrame(id);
-            window.onYouTubeIframeAPIReady = null;
-            if (playerRef.current?.destroy) {
-                try {
-                    playerRef.current.destroy();
-                } catch (_) {}
-                playerRef.current = null;
+        const manifestUrl = HLS_MANIFEST_URL.startsWith("/") ? window.location.origin + HLS_MANIFEST_URL : HLS_MANIFEST_URL;
+        let retryCount = 0;
+        let cancelled = false;
+        const MAX_RETRY = 1;
+
+        const initHls = () => {
+            if (cancelled || !videoRef.current) return;
+            if (hlsRef.current) return;
+            const v = videoRef.current;
+            if (Hls.isSupported()) {
+                const hls = new Hls({
+                    enableWorker: true,
+                    lowLatencyMode: false,
+                    maxBufferLength: 20,
+                    maxMaxBufferLength: 30,
+                    maxBufferSize: 30 * 1000 * 1000,
+                    maxBufferHole: 0.5,
+                    xhrSetup(xhr) {
+                        xhr.withCredentials = false;
+                    },
+                });
+                hlsRef.current = hls;
+                hls.on(Hls.Events.MANIFEST_PARSED, () => setVideoReady(true));
+                hls.on(Hls.Events.LEVEL_LOADED, () => setVideoReady((r) => r || true));
+                hls.on(Hls.Events.ERROR, (_, data) => {
+                    if (!data.fatal) return;
+                    const fragUrl = data.frag?.url ?? data.url ?? "(unknown)";
+                    console.error("[Hero HLS] Fatal error:", data.type, data.details, "fragment:", fragUrl);
+                    hlsRef.current?.destroy();
+                    hlsRef.current = null;
+                    if (!cancelled && retryCount < MAX_RETRY && videoRef.current) {
+                        retryCount += 1;
+                        setTimeout(initHls, 600);
+                    }
+                });
+                hls.loadSource(manifestUrl);
+                hls.attachMedia(v);
+            } else if (v.canPlayType("application/vnd.apple.mpegurl")) {
+                v.src = manifestUrl;
+                v.addEventListener("loadedmetadata", () => setVideoReady(true), { once: true });
+                v.addEventListener("error", () => console.error("[Hero HLS] Video load error"));
             }
         };
-    }, []);
 
+        const runAfterLayout = () => {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    if (!cancelled && videoRef.current && !hlsRef.current) initHls();
+                });
+            });
+        };
+        const timeoutId = setTimeout(runAfterLayout, 0);
+
+        return () => {
+            cancelled = true;
+            clearTimeout(timeoutId);
+            if (videoRef.current) {
+                videoRef.current.removeEventListener("play", onPlay);
+                videoRef.current.removeEventListener("ended", onEnded);
+            }
+            if (textFadeTimeoutRef.current) clearTimeout(textFadeTimeoutRef.current);
+            if (hlsRef.current) {
+                hlsRef.current.destroy();
+                hlsRef.current = null;
+            }
+        };
+    }, [videoElMounted]);
+
+    // Start playback muted immediately (browsers allow this); unmuted play needs one real user click
     useEffect(() => {
-        if (!videoReady || !playerRef.current?.unMute) return;
-        playerRef.current.unMute();
-    }, [videoReady]);
+        if (!videoReady || !videoRef.current || slide !== 0) return;
+        const el = videoRef.current;
+        el.muted = true;
+        el.currentTime = 0;
+        el.play().catch(() => {});
+    }, [videoReady, slide]);
+
+    // Unlock sound on first real user click (browsers require a real gesture for unmuted play)
+    const handleUnlockSound = React.useCallback((e) => {
+        if (slide !== 0 || !videoRef.current) return;
+        setSoundUnlocked(true);
+        const el = videoRef.current;
+        el.muted = false;
+        el.play().catch(() => {});
+    }, [slide]);
+
+    // Unmute + play when user clicks/hovers elsewhere (e.g. after overlay is gone)
+    const handleUnmute = React.useCallback(() => {
+        if (slide !== 0 || !videoRef.current) return;
+        const el = videoRef.current;
+        el.muted = false;
+        el.play().catch(() => {});
+    }, [slide]);
+
+    // When switching to video frame (slide 0): show text again until fade delay after play
+    useEffect(() => {
+        if (slide === 0) setTextFaded(false);
+    }, [slide]);
 
     // On mobile (no video): auto-advance to slide 1 after delay
     useEffect(() => {
@@ -98,22 +186,21 @@ export default function HeroSection() {
         return () => clearTimeout(t);
     }, []);
 
-    // When user switches back to slide 0, restart video and start audio
+    // When returning to slide 0: play muted (sound unlocks on next real click if needed)
     useEffect(() => {
-        if (slide !== 0 || !playerRef.current?.seekTo) return;
-        try {
-            playerRef.current.unMute();
-            playerRef.current.seekTo(0, true);
-            playerRef.current.playVideo();
-        } catch (_) {}
-    }, [slide]);
+        if (slide !== 0 || !videoRef.current) return;
+        const v = videoRef.current;
+        v.muted = !soundUnlocked;
+        v.currentTime = 0;
+        v.play().catch(() => {});
+    }, [slide, videoReady, soundUnlocked]);
 
-    // When on image slide (slide 1), stop video and mute
+    // When on image slide (slide 1), pause video only (keep unmuted)
     useEffect(() => {
-        if (slide !== 1 || !playerRef.current) return;
+        if (slide !== 1 || !videoRef.current) return;
+        const v = videoRef.current;
         try {
-            playerRef.current.mute();
-            playerRef.current.pauseVideo();
+            v.pause();
         } catch (_) {}
     }, [slide]);
 
@@ -124,10 +211,24 @@ export default function HeroSection() {
         return () => clearTimeout(t);
     }, [slide]);
 
-    const showText = slide === 1 || !videoStarted;
+    // Show hero text: on image frame always; on video frame until 1.5s after video starts
+    const showText = slide === 1 || !textFaded;
 
     return (
-        <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black py-12 md:py-20">
+        <section
+            className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black py-12 md:py-20"
+            onClick={handleUnmute}
+            onPointerEnter={handleUnmute}
+        >
+            {/* One-time overlay: click anywhere to enable sound (browser requires real user gesture) */}
+            {slide === 0 && !soundUnlocked && (
+                <button
+                    type="button"
+                    onClick={handleUnlockSound}
+                    className="absolute inset-0 z-[5] cursor-pointer md:block hidden"
+                    aria-label="Click to play sound"
+                />
+            )}
             {/* Slide 0: Mobile – image + text until "advance" */}
             <div className="absolute inset-0 z-0 md:hidden">
                 <Image
@@ -147,16 +248,21 @@ export default function HeroSection() {
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 style={{ width: "200%" }}
             >
-                {/* Frame 0: video */}
+                {/* Frame 0: HLS video */}
                 <div className="relative flex-shrink-0 w-1/2 h-full overflow-hidden pointer-events-none">
                     <div
-                        ref={videoContainerRef}
                         className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 opacity-70"
                         style={{ visibility: slide === 0 ? "visible" : "hidden" }}
                     >
-                        <div
-                            id="hero-youtube-player"
-                            className="absolute inset-0 w-full h-full [&_iframe]:!absolute [&_iframe]:!inset-0 [&_iframe]:!w-full [&_iframe]:!h-full [&_iframe]:!object-cover"
+                        <video
+                            ref={setVideoRef}
+                            src={USE_MP4 ? HERO_MP4_URL : undefined}
+                            className="absolute inset-0 w-full h-full object-cover bg-black"
+                            playsInline
+                            muted
+                            loop={false}
+                            preload="auto"
+                            aria-label="Hero background video"
                         />
                     </div>
                     <div className="absolute inset-0 bg-black/60" />
