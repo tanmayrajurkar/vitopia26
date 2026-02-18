@@ -5,6 +5,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async rewrites() {
+    return [{ source: "/hls/index.m3u8", destination: "/api/hls/manifest" }];
+  },
   env: {
     NEXT_API_TOKEN: process.env.NEXT_API_TOKEN,
     JWT_SECRET: process.env.JWT_SECRET,
