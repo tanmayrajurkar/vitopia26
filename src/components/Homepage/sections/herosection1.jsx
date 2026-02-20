@@ -35,6 +35,16 @@ export default function HeroSection() {
     const [textFaded, setTextFaded] = useState(false); // true = hide hero text (after delay from video start)
     const [slide, setSlide] = useState(0); // 0 = video (first), 1 = image
     const [soundUnlocked, setSoundUnlocked] = useState(false); // true after first real user click (required by browsers for unmuted play)
+    const [isDesktop, setIsDesktop] = useState(true);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        const m = window.matchMedia("(min-width: 768px)");
+        setIsDesktop(m.matches);
+        const handler = () => setIsDesktop(m.matches);
+        m.addEventListener("change", handler);
+        return () => m.removeEventListener("change", handler);
+    }, []);
 
     const setVideoRef = (el) => {
         videoRef.current = el;
@@ -230,26 +240,16 @@ export default function HeroSection() {
                 />
             )}
             {/* Slide 0: Mobile – image + text until "advance" */}
-            <div className="absolute inset-0 z-0 md:hidden">
-                <Image
-                    src="/hero-image.png"
-                    alt="Hero Background"
-                    fill
-                    className="object-cover"
-                    priority
-                />
-                <div className="absolute inset-0 bg-black/70" />
-            </div>
 
             {/* Desktop: sliding “scroll” between video and image frames */}
             <motion.div
-                className="absolute inset-0 z-0 overflow-hidden hidden md:flex"
-                animate={{ x: slide === 0 ? "0%" : "-50%" }}
+                className="absolute inset-0 z-0 overflow-hidden flex"
+                animate={{ x: isDesktop ? (slide === 0 ? "0%" : "-50%") : "0%" }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 style={{ width: "200%" }}
             >
-                {/* Frame 0: HLS video */}
-                <div className="relative flex-shrink-0 w-1/2 h-full overflow-hidden pointer-events-none">
+                {/* Frame 0: HLS video (desktop only; hidden on mobile) */}
+                <div className="relative flex-shrink-0 w-1/2 h-full overflow-hidden pointer-events-none hidden md:block">
                     <div
                         className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 opacity-70"
                         style={{ visibility: slide === 0 ? "visible" : "hidden" }}
@@ -373,8 +373,8 @@ export default function HeroSection() {
                 </motion.div>
             </div>
 
-            {/* Slide dots – center below */}
-            <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 flex items-center justify-center gap-2">
+            {/* Slide dots – center below (desktop only; mobile shows only image frame) */}
+            <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 hidden md:flex items-center justify-center gap-2">
                 <button
                     type="button"
                     aria-label="Slide 1"

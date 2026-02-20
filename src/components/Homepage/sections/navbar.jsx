@@ -120,23 +120,22 @@ export default function Navbar() {
 
 
 
-            <div className="relative inline-block group scale-[0.85] origin-right">
-              {/* Pulsing Glow Background */}
-              <div className="absolute -inset-3 bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 opacity-20 blur-xl group-hover:opacity-40 animate-pulse transition-opacity duration-300" />
+            <div className="relative group/passes">
+              <div className="relative inline-block group scale-[0.85] origin-right">
+                {/* Pulsing Glow Background */}
+                <div className="absolute -inset-3 bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 opacity-20 blur-xl group-hover:opacity-40 animate-pulse transition-opacity duration-300" />
 
-              <Link
-                href="https://events.vitap.ac.in/e/pro-cultural-registrations-f8d54d4d-d080-4535-83c4-c629fd2c7fbe"
-                target="_blank"
-                className="relative block overflow-hidden"
-                style={{
-                  clipPath: 'polygon(12% 0%, 100% 0%, 88% 100%, 0% 100%)'
-                }}
-              >
-                {/* Main Button */}
-                <div className="relative cursor-pointer px-8 py-3 bg-gradient-to-r from-lime-400 via-green-400 to-lime-500 text-black font-anton text-lg uppercase tracking-[0.1em] transition-all duration-300 group-hover:from-lime-300 group-hover:via-green-300 group-hover:to-lime-400">
-                  <div className="flex items-center gap-3 relative z-10">
+                <button
+                  type="button"
+                  className="relative block overflow-hidden w-full text-left"
+                  style={{
+                    clipPath: 'polygon(12% 0%, 100% 0%, 88% 100%, 0% 100%)'
+                  }}
+                >
+                  {/* Main Button */}
+                  <div className="relative cursor-pointer px-8 py-3 bg-gradient-to-r from-lime-400 via-green-400 to-lime-500 text-black font-anton text-lg uppercase tracking-[0.1em] transition-all duration-300 group-hover:from-lime-300 group-hover:via-green-300 group-hover:to-lime-400 flex items-center justify-center gap-3">
                     <span className="group-hover:translate-x-1 transition-transform duration-300">GRAB PASSES</span>
-                    <MdArrowOutward className="text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                    <IconChevronDown size={20} className="group-hover:translate-y-0.5 transition-transform duration-300" />
                   </div>
 
                   {/* Diagonal Shimmer */}
@@ -144,12 +143,35 @@ export default function Navbar() {
 
                   {/* Animated Scanline */}
                   <div className="absolute left-0 right-0 h-[2px] bg-white/60 top-1/2 -translate-y-1/2 group-hover:animate-ping opacity-0 group-hover:opacity-100" />
-                </div>
-              </Link>
+                </button>
 
-              {/* Decorative Corner Elements */}
-              <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-lime-400 group-hover:w-5 group-hover:h-5 transition-all duration-300" />
-              <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-lime-400 group-hover:w-5 group-hover:h-5 transition-all duration-300" />
+                {/* Decorative Corner Elements */}
+                <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-lime-400 group-hover:w-5 group-hover:h-5 transition-all duration-300" />
+                <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-lime-400 group-hover:w-5 group-hover:h-5 transition-all duration-300" />
+              </div>
+              {/* Dropdown: Internal / External */}
+              <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover/passes:opacity-100 group-hover/passes:visible transition-all duration-300 z-50">
+                <div className="bg-black/90 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden py-2 min-w-[200px] shadow-xl">
+                  <Link
+                    href="https://events.vitap.ac.in/e/pro-cultural-registrations-f8d54d4d-d080-4535-83c4-c629fd2c7fbe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between px-4 py-2.5 text-sm text-gray-300 hover:text-lime-400 hover:bg-white/5 transition-colors font-bold uppercase tracking-wider"
+                  >
+                    Internal (VIT-AP)
+                    <MdArrowOutward size={16} />
+                  </Link>
+                  <Link
+                    href="https://events.vitap.ac.in/e/cultural-external-registrations-2f8216ae-f6e0-470b-ae89-374f4693b440"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between px-4 py-2.5 text-sm text-gray-300 hover:text-lime-400 hover:bg-white/5 transition-colors font-bold uppercase tracking-wider border-t border-white/10"
+                  >
+                    External
+                    <MdArrowOutward size={16} />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -232,36 +254,48 @@ export default function Navbar() {
               transition={{ delay: 0.5 }}
               className="relative inline-block group mt-8"
             >
-              {/* Pulsing Glow Background */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 opacity-30 blur-2xl group-hover:opacity-50 animate-pulse transition-opacity duration-300" />
+              <div className="flex flex-col items-center gap-3">
+                <div className="relative inline-block group/btn">
+                  {/* Pulsing Glow Background */}
+                  <div className="absolute -inset-4 bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 opacity-30 blur-2xl group-hover/btn:opacity-50 animate-pulse transition-opacity duration-300" />
+                  <Link
+                    href="https://events.vitap.ac.in/e/pro-cultural-registrations-f8d54d4d-d080-4535-83c4-c629fd2c7fbe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="relative block overflow-hidden"
+                    style={{
+                      clipPath: 'polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%)'
+                    }}
+                  >
+                    {/* Main Button */}
+                    <div className="relative cursor-pointer px-8 py-4 bg-gradient-to-r from-lime-400 via-green-400 to-lime-500 text-black font-anton text-xl uppercase tracking-[0.15em] transition-all duration-300 group-hover/btn:from-lime-300 group-hover/btn:via-green-300 group-hover/btn:to-lime-400">
+                      <div className="flex items-center gap-3 relative z-10">
+                        <span className="group-hover/btn:translate-x-1 transition-transform duration-300">GRAB PASSES</span>
+                        <MdArrowOutward className="text-xl group-hover/btn:translate-x-2 group-hover/btn:-translate-y-2 transition-transform duration-300" />
+                      </div>
 
-              <Link
-                href="https://events.vitap.ac.in/e/pro-cultural-registrations-f8d54d4d-d080-4535-83c4-c629fd2c7fbe"
-                target="_blank"
-                onClick={() => setMobileMenuOpen(false)}
-                className="relative block overflow-hidden"
-                style={{
-                  clipPath: 'polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%)'
-                }}
-              >
-                {/* Main Button */}
-                <div className="relative cursor-pointer px-8 py-4 bg-gradient-to-r from-lime-400 via-green-400 to-lime-500 text-black font-anton text-xl uppercase tracking-[0.15em] transition-all duration-300 group-hover:from-lime-300 group-hover:via-green-300 group-hover:to-lime-400">
-                  <div className="flex items-center gap-3 relative z-10">
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">GRAB PASSES</span>
-                    <MdArrowOutward className="text-xl group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300" />
-                  </div>
+                      {/* Diagonal Shimmer */}
+                      <div className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12" />
 
-                  {/* Diagonal Shimmer */}
-                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12" />
-
-                  {/* Animated Scanline */}
-                  <div className="absolute left-0 right-0 h-[2px] bg-white/60 top-1/2 -translate-y-1/2 group-hover:animate-ping opacity-0 group-hover:opacity-100" />
+                      {/* Animated Scanline */}
+                      <div className="absolute left-0 right-0 h-[2px] bg-white/60 top-1/2 -translate-y-1/2 group-hover/btn:animate-ping opacity-0 group-hover/btn:opacity-100" />
+                    </div>
+                  </Link>
+                  {/* Decorative Corner Elements */}
+                  <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-lime-400 group-hover/btn:w-8 group-hover/btn:h-8 transition-all duration-300" />
+                  <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-lime-400 group-hover/btn:w-8 group-hover/btn:h-8 transition-all duration-300" />
                 </div>
-              </Link>
-
-              {/* Decorative Corner Elements */}
-              <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-lime-400 group-hover:w-8 group-hover:h-8 transition-all duration-300" />
-              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-lime-400 group-hover:w-8 group-hover:h-8 transition-all duration-300" />
+                <Link
+                  href="https://events.vitap.ac.in/e/cultural-external-registrations-2f8216ae-f6e0-470b-ae89-374f4693b440"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-white/70 hover:text-lime-400 font-outfit text-sm font-semibold underline underline-offset-2 transition-colors"
+                >
+                  External participants → register here
+                </Link>
+              </div>
             </motion.div>
           </motion.div>
         )

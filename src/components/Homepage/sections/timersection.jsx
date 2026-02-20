@@ -61,6 +61,7 @@ const TimerSection = () => {
               <Link
                 href="https://events.vitap.ac.in/e/pro-cultural-registrations-f8d54d4d-d080-4535-83c4-c629fd2c7fbe"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="relative block overflow-hidden"
                 style={{
                   clipPath: 'polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%)'
@@ -89,6 +90,17 @@ const TimerSection = () => {
               {/* <div className="absolute -top-1 -right-1 w-2 h-2 bg-lime-400 rounded-full group-hover:scale-150 transition-transform duration-300" />
               <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-green-400 rounded-full group-hover:scale-150 transition-transform duration-300" /> */}
             </div>
+            <p className="mt-4 text-white/60 font-outfit text-sm md:text-base">
+              External participants{" "}
+              <Link
+                href="https://events.vitap.ac.in/e/cultural-external-registrations-2f8216ae-f6e0-470b-ae89-374f4693b440"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-lime-400 hover:text-lime-300 font-semibold underline underline-offset-2 transition-colors"
+              >
+                register here
+              </Link>
+            </p>
           </div>
 
           {/* Timer Component Wrapper */}
