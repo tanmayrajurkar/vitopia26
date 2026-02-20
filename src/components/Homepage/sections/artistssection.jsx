@@ -48,15 +48,21 @@ const days = [
         bgAccent: "bg-purple-500",
         artists: [
             {
-                name: "Darshan Raval",
-                role: "Playback Singer",
-                image: "/artists/darshan.png",
+                name: "Band Circles",
+                role: "Live Band",
+                image: "/artists/circles.png",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
                 name: "Band Macca",
                 role: "Live Band",
                 image: "/artists/macca.png",
+                gradient: "from-black/20 via-black/10 to-black/80",
+            },
+            {
+                name: "Darshan Raval",
+                role: "Playback Singer",
+                image: "/artists/darshan.png",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
             {
@@ -79,15 +85,15 @@ const days = [
         bgAccent: "bg-amber-400",
         artists: [
             {
-                name: "Mohan Sisters Live",
-                role: "Live Performers",
-                image: "/artists/mohan-sisters.png",
-                gradient: "from-black/20 via-black/10 to-black/80",
-            },
-            {
                 name: "Pineapple Express",
                 role: "Live Band",
                 image: "/artists/pineapple.png",
+                gradient: "from-black/20 via-black/10 to-black/80",
+            },
+            {
+                name: "Mohan Sisters Live",
+                role: "Live Performers",
+                image: "/artists/mohan-sisters.png",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
 
@@ -95,12 +101,6 @@ const days = [
                 name: "DJ Prithvi Sai",
                 role: "DJ",
                 image: "/artists/prithvi.png",
-                gradient: "from-black/20 via-black/10 to-black/80",
-            },
-            {
-                name: "Band Circles",
-                role: "Live Band",
-                image: "/artists/circles.png",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
         ],
