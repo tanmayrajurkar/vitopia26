@@ -16,17 +16,18 @@ const days = [
         bgAccent: "bg-lime-400",
         artists: [
             {
-                name: "Hesham Abdul Wahab",
-                role: "Music Director",
-                image: "/artists/hesham.jpeg",
-                gradient: "from-black/20 via-black/10 to-black/80",
-            },
-            {
                 name: "Mohana Bhogaraju",
                 role: "Playback Singer",
                 image: "/artists/mohana.png",
                 gradient: "from-black/20 via-black/10 to-black/80",
             },
+            {
+                name: "Hesham Abdul Wahab",
+                role: "Music Director",
+                image: "/artists/hesham.jpeg",
+                gradient: "from-black/20 via-black/10 to-black/80",
+            },
+            
 
             {
                 name: "DJ Notorious",
